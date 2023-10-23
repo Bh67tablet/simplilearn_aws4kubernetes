@@ -19,7 +19,7 @@
  variable "ec2_parameters" { 
    default = { 
 		region = "us-east-1"
-		vpc = "vpc-0ea4c6b825b733b09"
+		vpc = "vpc-0566166c204b7eca4"
 		ami = "ami-0fc5d935ebf8bc3bc"
 		itype = "t2.micro"
 		subnet = "subnet-0c4d6ac22631a5e56"
