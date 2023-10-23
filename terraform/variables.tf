@@ -2,20 +2,6 @@
    default ="us-east-1" 
  } 
   
- variable tags { 
-   description = "default tags to use" 
-  
-   default = { 
-     Name             = "Ansible"
-     Confidelity      = "C2" 
-     Environment      = "Sandbox" 
-     ManagedBy        = "firstname.lastname@vodafone.com" 
-     NetworkType      = "I-A" 
-     Project          = "Sandbox" 
-     TaggingVersion   = "V2.4" 
-   } 
- } 
-  
  variable "ec2_parameters" { 
    default = { 
 		region = "us-east-1"
