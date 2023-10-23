@@ -60,6 +60,11 @@ resource "aws_instance" "bh67" {
 	subnet_id 			= var.ec2_parameters.subnet
 	associate_public_ip_address 	= var.ec2_parameters.publicip
 	key_name 			= var.ec2_parameters.keyname
+	tags = {
+	    # The count.index allows you to launch a resource 
+	    # starting with the distinct index number 0 and corresponding to this instance.
+	    Name = "Ansible-${count.index}"
+  	}
 user_data = <<EOF
 #! /bin/bash
 echo "I was here">/var/tmp/greetings.txt
