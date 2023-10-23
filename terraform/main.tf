@@ -46,11 +46,6 @@ resource "aws_security_group" "bh67sg" {
   lifecycle {
     create_before_destroy = true
   }
-    
-    tags = merge(
-    var.tags
-  )
-    
 }
 
 resource "aws_instance" "bh67" {
@@ -89,10 +84,6 @@ EOF
     aws_security_group.bh67sg.id
   ]
   
-  tags = merge(
-    var.tags
-  )
-
   depends_on = [ aws_security_group.bh67sg ]
 }
 
