@@ -86,8 +86,3 @@ EOF
   
   depends_on = [ aws_security_group.bh67sg ]
 }
-
-
-output "ec2instance" {
-  value = aws_instance.bh67[count.index].public_ip
-}
