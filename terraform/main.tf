@@ -89,5 +89,5 @@ EOF
 
 
 output "ec2instance" {
-  value = aws_instance.bh67.public_ip
+  value = aws_instance.bh67[count.index].public_ip
 }
