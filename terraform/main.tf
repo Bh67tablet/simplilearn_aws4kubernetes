@@ -64,6 +64,19 @@ user_data = <<EOF
 echo "I was here">/var/tmp/greetings.txt
 sudo apt -y update >>/var/tmp/yum.update 2>&1
 sudo apt -y install git >>/var/tmp/yum.update 2>&1
+sudo apt-get install -y software-properties-common >>/var/tmp/yum.update 2>&1
+sudo apt-add-repository ppa:ansible/ansible >>/var/tmp/yum.update 2>&1
+sudo apt-get update >>/var/tmp/yum.update 2>&1
+sudo apt-get install -y ansible >>/var/tmp/yum.update 2>&1
+sudo useradd ansiuser -s /bin/bash -p 'pass123' >>/var/tmp/yum.update 2>&1                                                                                                                                                    
+sudo echo "u1:pass123" | chpasswd >>/var/tmp/yum.update 2>&1
+sudo cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.bak >>/var/tmp/yum.update 2>&1
+sudo cp -p /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config >>/var/tmp/yum.update 2>&1
+sudo sed -i "s/^root.*$/root    ALL=(ALL:ALL) ALL\nansiuser ALL=NOPASSWD: ALL/g" /etc/sudoers >>/var/tmp/yum.update 2>&1
+sudo systemctl restart sshd >>/var/tmp/yum.update 2>&1
+sudo diff /etc/ssh/sshd_config /etc/ssh/sshd_config.bak >>/var/tmp/yum.update 2>&1
+sudo diff /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
 EOF
 
   vpc_security_group_ids = [
