@@ -1,8 +1,83 @@
-resource "aws_s3_bucket" "example" {
-  bucket = "bh67-githubactions-bucket"
+provider "aws" {
+ 	region 	= var.ec2_parameters.region
+}
 
-  tags = {
-    Name        = "bh67"
-    Environment = "Dev"
+resource "aws_security_group" "bh67sg" {
+ 	name 		= var.ec2_parameters.secgroupname
+ 	description 	= var.ec2_parameters.secgroupname
+ 	vpc_id 	= var.ec2_parameters.vpc
+
+  // ssh, https, rdp, postgres
+  ingress {
+    from_port = 22
+    protocol = "tcp"
+    to_port = 22
+    cidr_blocks = ["0.0.0.0/0"]
   }
+  
+  ingress {
+    from_port = 443
+    protocol = "tcp"
+    to_port = 443
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  ingress {
+    from_port = 3389
+    protocol = "tcp"
+    to_port = 3389
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  ingress {
+    from_port = 5432
+    protocol = "tcp"
+    to_port = 5432
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+    
+    tags = merge(
+    var.tags
+  )
+    
+}
+
+resource "aws_instance" "bh67" {
+	ami 				= var.ec2_parameters.ami
+	instance_type 			= var.ec2_parameters.itype
+	subnet_id 			= var.ec2_parameters.subnet
+	associate_public_ip_address 	= var.ec2_parameters.publicip
+	key_name 			= var.ec2_parameters.keyname
+user_data = <<EOF
+#! /bin/bash
+echo "I was here">/var/tmp/greetings.txt
+sudo apt -y update >>/var/tmp/yum.update 2>&1
+sudo apt -y install git >>/var/tmp/yum.update 2>&1
+EOF
+
+  vpc_security_group_ids = [
+    aws_security_group.bh67sg.id
+  ]
+  
+  tags = merge(
+    var.tags
+  )
+
+  depends_on = [ aws_security_group.bh67sg ]
+}
+
+
+output "ec2instance" {
+  value = aws_instance.bh67.public_ip
 }
