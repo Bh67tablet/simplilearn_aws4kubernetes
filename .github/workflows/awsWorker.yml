@@ -36,7 +36,7 @@ jobs:
     - name: Validate AWS Credentials working or not
       run: |
         aws sts get-caller-identity
-    - name: Execute terraform scripts to launch S3 bucket
+    - name: Execute terraform scripts
       run: |
         terraform init
         terraform apply --auto-approve
