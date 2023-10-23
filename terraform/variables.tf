@@ -6,7 +6,7 @@
    description = "default tags to use" 
   
    default = { 
-     Name             = "AnsibleMaster" 
+     Name             = "AnsibleHost-${count.index}"
      Confidelity      = "C2" 
      Environment      = "Sandbox" 
      ManagedBy        = "firstname.lastname@vodafone.com" 
