@@ -1,4 +1,4 @@
-name: TerraformAWS
+name: a
 
 on:
   workflow_dispatch:
