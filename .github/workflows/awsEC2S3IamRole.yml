@@ -1,4 +1,4 @@
-name: awsS3
+name: awsEC2S3IamRole
 
 on:
   workflow_dispatch:
