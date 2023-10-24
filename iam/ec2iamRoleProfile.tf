@@ -45,7 +45,7 @@ resource "aws_iam_instance_profile" "test_profile" {
 resource "aws_instance" "web" {
   ami           = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t3.micro"
-  aws_iam_instance_profile = "${aws_iam_instance_profile.test_profile.name}"
+  iam_instance_profile = "${aws_iam_instance_profile.test_profile.name}"
 
   tags = {
     Name = "HelloWorld"
