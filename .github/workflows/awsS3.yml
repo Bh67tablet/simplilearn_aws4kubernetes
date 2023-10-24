@@ -1,4 +1,4 @@
-name: a
+name: awsS3
 
 on:
   workflow_dispatch:
