@@ -38,4 +38,5 @@ jobs:
         aws sts get-caller-identity
     - name: Execute terraform scripts
       run: |
+        terraform init -reconfigure
         terraform destroy --auto-approve
