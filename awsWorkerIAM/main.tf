@@ -82,6 +82,8 @@ sudo diff /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
 echo "Hallo Bernd" > hello_bernd_`hostname`.txt
 sudo apt install -y awscli >>/var/tmp/yum.update 2>&1
 aws s3 cp hello_bernd_`hostname`.txt s3://bh67-githubactions-bucket/
+sudo ansible-galaxy collection install amazon.aws -y >>/var/tmp/yum.update 2>&1
+sudo apt install python3-pip -y >>/var/tmp/yum.update 2>&1
 EOF
 
   vpc_security_group_ids = [
