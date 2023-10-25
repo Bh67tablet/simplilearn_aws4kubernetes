@@ -79,6 +79,9 @@ sudo sed -i "s/^root.*$/root    ALL=(ALL:ALL) ALL\nansiuser ALL=NOPASSWD: ALL/g"
 sudo systemctl restart sshd >>/var/tmp/yum.update 2>&1
 sudo diff /etc/ssh/sshd_config /etc/ssh/sshd_config.bak >>/var/tmp/yum.update 2>&1
 sudo diff /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
+echo "Hallo Bernd" > hello_bernd_`hostname`.txt
+sudo apt install -y awscli >>/var/tmp/yum.update 2>&1
+aws s3 cp hello_bernd_`hostname`.txt s3://bh67-githubactions-bucket/
 EOF
 
   vpc_security_group_ids = [
