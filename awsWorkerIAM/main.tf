@@ -79,11 +79,12 @@ sudo sed -i "s/^root.*$/root    ALL=(ALL:ALL) ALL\nansiuser ALL=NOPASSWD: ALL/g"
 sudo systemctl restart sshd >>/var/tmp/yum.update 2>&1
 sudo diff /etc/ssh/sshd_config /etc/ssh/sshd_config.bak >>/var/tmp/yum.update 2>&1
 sudo diff /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
-echo "Hallo Bernd" > hello_bernd_`hostname`.txt
 sudo apt install -y awscli >>/var/tmp/yum.update 2>&1
-aws s3 cp hello_bernd_`hostname`.txt s3://bh67-githubactions-bucket/
 sudo ansible-galaxy collection install amazon.aws -y >>/var/tmp/yum.update 2>&1
 sudo apt install python3-pip -y >>/var/tmp/yum.update 2>&1
+echo `hostname -I` > ip_`hostname`.txt
+aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.txt
+aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 EOF
 
   vpc_security_group_ids = [
