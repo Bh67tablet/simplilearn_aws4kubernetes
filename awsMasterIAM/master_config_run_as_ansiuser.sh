@@ -11,33 +11,11 @@
 mkdir /home/ansiuser/.ssh
 chmod 700 /home/ansiuser/.ssh
 ssh-keygen -q -t rsa -f /home/ansiuser/.ssh/id_rsa -N '' <<< $'\ny' >/dev/null 2>&1
-for ip in $(cat ips); do echo ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip; done
+for ip in $(cat /home/ansiuser/ips); do echo ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip; done
 #ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@172.31.13.160
 
-sudo su -
-
-# cp -p /etc/ansible/hosts /etc/ansible/hosts.bak
-# cat > /etc/ansible/hosts << EOF
-# [worker1]
-# 172.31.7.96
-
-# [worker2]
-# 172.31.10.99
-
-# [webserver]
-# 172.31.7.96
-# 172.31.10.99
-# EOF
-# diff /etc/ansible/hosts /etc/ansible/hosts.bak
-
-
-# cat > /home/ansiuser/myinventory << EOF
-# [webserver]
-# 192.168.0.225
-# EOF
-
 echo [webserver] > /home/ansiuser/myinventory
-for ip in $(cat ips); do echo $ip >> /home/ansiuser/myinventory; done
+for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; done
 
 ansible -i /home/ansiuser/myinventory webserver -m ping
 
