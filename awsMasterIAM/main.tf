@@ -87,8 +87,8 @@ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.t
 aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate .
 echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips
-sudo cp ips /home/ansisuer/ips
-sudo chown ansisuer:ansisuer /home/ansisuer/ips
+sudo cp ips /home/ansiuser/ips
+sudo chown ansisuer:ansiuser /home/ansiuser/ips
 EOF
 
   vpc_security_group_ids = [
