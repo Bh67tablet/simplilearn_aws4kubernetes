@@ -1,36 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
+sudo -s <<ROOT
+echo `whoami` > /home/ansiuser/hallo.txt
 #
-# run as user: ansiuser !!!
-#
-
-#master:
-#--------
-
-
-#su – ansiuser
+sudo -i -u ansiuser bash << EOF
+echo `whoami` > /home/ansiuser/hallo_ansiuser.txt
 mkdir /home/ansiuser/.ssh
 chmod 700 /home/ansiuser/.ssh
 ssh-keygen -q -t rsa -f /home/ansiuser/.ssh/id_rsa -N '' <<< $'\ny' >/dev/null 2>&1
-for ip in $(cat /home/ansiuser/ips); do echo ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip; done
-#ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@172.31.13.160
-
+for ip in $(cat /home/ansiuser/ips); do sshpass -p ansiuser ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip; done
 echo [webserver] > /home/ansiuser/myinventory
 for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; done
-
-ansible -i /home/ansiuser/myinventory webserver -m ping
-
-sudo cp /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
-sudo cat > /etc/ansible/ansible.cfg << EOF
+EOF
+#
+cp /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
+cat > /etc/ansible/ansible.cfg << EOF
 [defaults]
 inventory = /home/ansiuser/myinventory
 EOF
-sudo diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
-
-ansible webserver -m ping
-ansible webserver -m command -a "free -h"
-ansible webserver -m command -a "whoami"
-ansible webserver -m file -a "name=/tmp/testdir state=directory"
-ansible webserver -m command -a "ls -al /tmp"
-ansible webserver -m file -a "name=/tmp/testdir state=absent"
-ansible webserver -m file -a "name=/tmp/testfile state=touch"
-ansible webserver -m file -a "name=/tmp/testfile state=absent"
+diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
+echo `whoami` > /home/ansiuser/hallo.txt
+ROOT
