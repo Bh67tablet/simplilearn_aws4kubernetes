@@ -85,6 +85,10 @@ sudo apt install python3-pip -y >>/var/tmp/yum.update 2>&1
 echo `hostname -I` > ip_`hostname`.txt
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.txt
 aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
+aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate .
+echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips
+sudo cp ips /home/ansisuer/ips
+sudo chown ansisuer:ansisuer /home/ansisuer/ips
 EOF
 
   vpc_security_group_ids = [
