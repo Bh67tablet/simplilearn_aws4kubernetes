@@ -11,6 +11,7 @@
 		subnet = "subnet-06e9c9d3c6120fd99"
 		publicip = true
 		keyname = "simplilearn_key"
-		secgroupname = "bh67sg"  
+		secgroupname = "bh67sg" 
+		iam_instance_profile   = "test_role"
 	} 
  }
