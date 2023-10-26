@@ -49,7 +49,7 @@ resource "aws_security_group" "bh67sg" {
 }
 
 resource "aws_instance" "bh67" {
-	count = 3
+	count = 1
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
 	subnet_id 			= var.ec2_parameters.subnet
@@ -59,7 +59,7 @@ resource "aws_instance" "bh67" {
 	tags = {
 	    # The count.index allows you to launch a resource 
 	    # starting with the distinct index number 0 and corresponding to this instance.
-	    Name = "Ansible-${count.index}"
+	    Name = "AnsibleMaster-${count.index}"
   	}
 user_data = <<EOF
 #! /bin/bash
