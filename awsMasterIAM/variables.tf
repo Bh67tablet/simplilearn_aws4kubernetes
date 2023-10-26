@@ -12,6 +12,6 @@
 		publicip = true
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg" 
-		iam_instance_profile   = "test_role"
+		iam_instance_profile   = "bh67"
 	} 
  }
