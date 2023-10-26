@@ -2,54 +2,9 @@ provider "aws" {
  	region 	= var.ec2_parameters.region
 }
 
-resource "aws_security_group" "bh67sg" {
- 	name 		= var.ec2_parameters.secgroupname
- 	description 	= var.ec2_parameters.secgroupname
- 	vpc_id 	= var.ec2_parameters.vpc
-
-  // ssh, https, rdp, postgres
-  ingress {
-    from_port = 22
-    protocol = "tcp"
-    to_port = 22
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  
-  ingress {
-    from_port = 443
-    protocol = "tcp"
-    to_port = 443
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  
-  ingress {
-    from_port = 3389
-    protocol = "tcp"
-    to_port = 3389
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  
-  ingress {
-    from_port = 5432
-    protocol = "tcp"
-    to_port = 5432
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    cidr_blocks     = ["0.0.0.0/0"]
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_instance" "bh67" {
 	count = 1
+	vpc_security_group_ids 		= ["sg-02a821aed20702149"]
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
 	subnet_id 			= var.ec2_parameters.subnet
@@ -90,10 +45,4 @@ echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips
 sudo cp ips /home/ansiuser/ips
 sudo chown ansisuer:ansiuser /home/ansiuser/ips
 EOF
-
-  vpc_security_group_ids = [
-    aws_security_group.bh67sg.id
-  ]
-  
-  depends_on = [ aws_security_group.bh67sg ]
 }
