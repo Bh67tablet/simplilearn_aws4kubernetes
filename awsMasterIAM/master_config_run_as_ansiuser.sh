@@ -19,12 +19,12 @@ for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; 
 
 ansible -i /home/ansiuser/myinventory webserver -m ping
 
-cp /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
-cat > /etc/ansible/ansible.cfg << EOF
+sudo cp /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
+sudo cat > /etc/ansible/ansible.cfg << EOF
 [defaults]
 inventory = /home/ansiuser/myinventory
 EOF
-diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
+sudo diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
 
 ansible webserver -m ping
 ansible webserver -m command -a "free -h"
