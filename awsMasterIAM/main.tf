@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "bh67" {
 	count = 1
-	vpc_security_group_ids 		= ["sg-02a821aed20702149"]
+	security_groups 		= ["bh67sg"]
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
 	subnet_id 			= var.ec2_parameters.subnet
