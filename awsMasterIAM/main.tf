@@ -44,10 +44,10 @@ aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate .
 echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips
 sudo cp ips /home/ansiuser/ips
 sudo chown ansisuer:ansiuser /home/ansiuser/ips
-sudo su - -c cat > /etc/ansible/ansible.cfg << ROOT
+sudo su - -c "cat > /etc/ansible/ansible.cfg << ROOT
 [defaults]
 inventory = /home/ansiuser/myinventory
-ROOT
+ROOT"
 sudo su - -c 'su - ansiuser -c "whoami"'
 sudo su - -c 'su - ansiuser -c "mkdir /home/ansiuser/.ssh"'
 sudo su - -c 'su - ansiuser -c "chmod 700 /home/ansiuser/.ssh"'
