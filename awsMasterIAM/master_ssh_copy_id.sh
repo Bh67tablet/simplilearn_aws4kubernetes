@@ -1,3 +1,4 @@
+sudo chown ansisuer:ansiuser /home/ansiuser/ips
 #for ip in $(cat /home/ansiuser/ips); do sshpass -p ansiuser ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip; done
 for ip in $(cat /home/ansiuser/ips); do echo "ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip"; done
 for ip in $(cat /home/ansiuser/ips); do echo "ssh -i $HOME/.ssh/id_rsa.pub ansiuser@$ip"; done
