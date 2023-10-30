@@ -19,5 +19,6 @@ EOF
 diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
 echo `whoami` > /home/ansiuser/hallo.txt
 ROOT
+#for ip in $(cat /home/ansiuser/ips); do echo "sshpass -p ansiuser ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip"; done
 echo "run the following commands: (did not run in script)"
-for ip in $(cat /home/ansiuser/ips); do echo "sshpass -p ansiuser ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip"; done
+for ip in $(cat /home/ansiuser/ips); do echo "ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip"; done
