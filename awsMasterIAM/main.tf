@@ -37,23 +37,14 @@ sudo diff /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
 sudo apt install -y awscli >>/var/tmp/yum.update 2>&1
 sudo ansible-galaxy collection install amazon.aws -y >>/var/tmp/yum.update 2>&1
 sudo apt install python3-pip -y >>/var/tmp/yum.update 2>&1
-echo `hostname -I` > ip_`hostname`.txt
-aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.txt
-aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
-aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate .
-echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips
-sudo cp ips /home/ansiuser/ips
-sudo chown ansisuer:ansiuser /home/ansiuser/ips
+sudo su - -c 'su - ansiuser -c "whoami"' >>/var/tmp/yum.update 2>&1
+sudo su - -c 'su - ansiuser -c "aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate ."'
+sudo su - -c 'su - ansiuser -c "echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips"'
+sudo su - -c "cp /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak"
 sudo su - -c "cat > /etc/ansible/ansible.cfg << ROOT
 [defaults]
 inventory = /home/ansiuser/myinventory
 ROOT"
-sudo su - -c 'su - ansiuser -c "whoami"'
-sudo su - -c 'su - ansiuser -c "mkdir /home/ansiuser/.ssh"'
-sudo su - -c 'su - ansiuser -c "chmod 700 /home/ansiuser/.ssh"'
-sudo su - -c 'su - ansiuser -c "ssh-keygen -q -t rsa -f /home/ansiuser/.ssh/id_rsa -N '' <<< $'\ny' >/dev/null 2>&1"'
-sudo su - -c 'su - ansiuser -c "echo [webserver] > /home/ansiuser/myinventory"'
-sudo su - -c 'su - ansiuser -c "for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; done"'
-sudo su - -c 'su - ansiuser -c "cat /home/ansiuser/myinventory"'
+sudo su - -c "cat /etc/ansible/ansible.cfg" >>/var/tmp/yum.update 2>&1
 EOF
 }
