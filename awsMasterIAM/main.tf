@@ -48,5 +48,12 @@ sudo su - -c cat > /etc/ansible/ansible.cfg << ROOT
 [defaults]
 inventory = /home/ansiuser/myinventory
 ROOT
+sudo su - -c 'su - ansiuser -c "whoami"'
+sudo su - -c 'su - ansiuser -c "mkdir /home/ansiuser/.ssh"'
+sudo su - -c 'su - ansiuser -c "chmod 700 /home/ansiuser/.ssh"'
+sudo su - -c 'su - ansiuser -c "ssh-keygen -q -t rsa -f /home/ansiuser/.ssh/id_rsa -N '' <<< $'\ny' >/dev/null 2>&1"'
+sudo su - -c 'su - ansiuser -c "echo [webserver] > /home/ansiuser/myinventory"'
+sudo su - -c 'su - ansiuser -c "for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; done"'
+sudo su - -c 'su - ansiuser -c "cat /home/ansiuser/myinventory"'
 EOF
 }
