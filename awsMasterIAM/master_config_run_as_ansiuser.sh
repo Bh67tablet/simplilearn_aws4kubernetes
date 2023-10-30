@@ -7,7 +7,6 @@ echo `whoami` > /home/ansiuser/hallo_ansiuser.txt
 mkdir /home/ansiuser/.ssh
 chmod 700 /home/ansiuser/.ssh
 ssh-keygen -q -t rsa -f /home/ansiuser/.ssh/id_rsa -N '' <<< $'\ny' >/dev/null 2>&1
-#for ip in $(cat /home/ansiuser/ips); do sshpass -p ansiuser ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip; done
 echo [webserver] > /home/ansiuser/myinventory
 for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; done
 EOF
@@ -20,3 +19,5 @@ EOF
 diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
 echo `whoami` > /home/ansiuser/hallo.txt
 ROOT
+echo "run the following commands: (did not run in script)"
+for ip in $(cat /home/ansiuser/ips); do echo "sshpass -p ansiuser ssh-copy-id -i $HOME/.ssh/id_rsa.pub ansiuser@$ip"; done
