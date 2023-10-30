@@ -4,3 +4,4 @@ cat > /etc/ansible/ansible.cfg << EOF
 inventory = /home/ansiuser/myinventory
 EOF
 diff /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
+cat /etc/ansible/ansible.cfg
