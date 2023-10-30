@@ -25,7 +25,7 @@ sudo apt-get install -y software-properties-common >>/var/tmp/yum.update 2>&1
 sudo apt-add-repository ppa:ansible/ansible >>/var/tmp/yum.update 2>&1
 sudo apt-get update >>/var/tmp/yum.update 2>&1
 sudo apt-get install -y ansible >>/var/tmp/yum.update 2>&1
-sudo useradd -m ansiuser -s /bin/bash -p 'ansiuser' >>/var/tmp/yum.update 2>&1                                                                                                                                                    
+sudo useradd -m ansiuser -s /bin/bash -p 'ansiuser' >>/var/tmp/yum.update 2>&1
 sudo echo "ansiuser:ansiuser" | chpasswd >>/var/tmp/yum.update 2>&1
 sudo cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.bak >>/var/tmp/yum.update 2>&1
 sudo cp -p /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
