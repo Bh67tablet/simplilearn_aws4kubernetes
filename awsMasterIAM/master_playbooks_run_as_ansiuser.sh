@@ -141,3 +141,29 @@ ansible-playbook playbooktags.yml --tags=install,mydir
 ansible-playbook playbooktags.yml --skip-tags=install,mydir
 ansible-playbook playbooktags.yml --tags untagged
 ansible-playbook playbooktags.yml --tags tagged
+
+cat > playbook_loop_users.yml << EOF
+- name: Loops in ansible
+  hosts: webserver
+  become: true
+  vars:
+   user_list:
+    - user01
+    - user02
+    - user03
+  tasks:
+  - name: Install packages git,apache,maven,tree
+    package: name={{item}} state=present
+    loop:
+     - git
+     - apache2
+     - maven
+     - tree
+     - vim
+     - name
+  - name: Create multiple users
+    user: name={{item}} state=present
+    loop: "{{user_list}}"
+EOF
+
+ansible-playbook playbook_loop_users.yml
