@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo [webserver] > /home/ansiuser/myinventory
-echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips
+echo $(grep -w "private_ip".*, /home/ansiuser/terraform.tfstate | cut -d"\"" -f4) >> /home/ansiuser/ips
 for ip in $(cat /home/ansiuser/ips); do echo $ip >> /home/ansiuser/myinventory; done
 cat /home/ansiuser/myinventory
 mkdir /home/ansiuser/.ssh
