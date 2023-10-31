@@ -37,14 +37,7 @@ sudo diff /etc/sudoers /etc/sudoers.bak >>/var/tmp/yum.update 2>&1
 sudo apt install -y awscli >>/var/tmp/yum.update 2>&1
 sudo ansible-galaxy collection install amazon.aws -y >>/var/tmp/yum.update 2>&1
 sudo apt install python3-pip -y >>/var/tmp/yum.update 2>&1
-sudo su - -c 'su - ansiuser -c "whoami"' >>/var/tmp/yum.update 2>&1
 sudo su - -c 'su - ansiuser -c "aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate ."'
-sudo su - -c 'su - ansiuser -c "echo $(grep -w "private_ip".*, terraform.tfstate | cut -d"\"" -f4) >> ips"'
-sudo su - -c "cp /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak"
-sudo su - -c "cat > /etc/ansible/ansible.cfg << ROOT
-[defaults]
-inventory = /home/ansiuser/myinventory
-ROOT"
-sudo su - -c "cat /etc/ansible/ansible.cfg" >>/var/tmp/yum.update 2>&1
+sudo su - -c 'su - ansiuser -c "whoami"' >>/var/tmp/yum.update 2>&1
 EOF
 }
