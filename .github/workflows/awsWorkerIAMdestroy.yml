@@ -39,4 +39,4 @@ jobs:
     - name: Execute terraform scripts
       run: |
         terraform init -reconfigure
-        terraform destroy --auto-approve -var="vpc_id=${{ vars.VPC_ID }}"
+        terraform destroy --auto-approve -var="vpc_id=${{ vars.VPC_ID }}" -var="subnet_id=${{ vars.SUBNET_ID }}"
