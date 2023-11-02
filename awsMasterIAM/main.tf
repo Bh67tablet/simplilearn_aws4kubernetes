@@ -10,7 +10,7 @@ resource "aws_instance" "bh67" {
 	associate_public_ip_address 	= var.ec2_parameters.publicip
 	key_name 			= var.ec2_parameters.keyname
 	iam_instance_profile   		= var.ec2_parameters.iam_instance_profile
-	security_groups 		= [aws_security_group.bh67sg.id]
+	vpc_security_group_ids 		= var.vpc_security_group_ids
 	tags = {
 	    # The count.index allows you to launch a resource 
 	    # starting with the distinct index number 0 and corresponding to this instance.
