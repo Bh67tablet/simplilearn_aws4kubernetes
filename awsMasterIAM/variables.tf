@@ -6,10 +6,6 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "vpc_security_group_ids" {
-  type        = string
-}
-
 variable "ec2_parameters" { 
 	default = { 
 		region = "us-east-1"
