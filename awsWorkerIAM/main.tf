@@ -56,7 +56,7 @@ resource "aws_security_group" "bh67sg" {
 }
 
 resource "aws_instance" "bh67" {
-	count = 3
+	count = 1
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
 	subnet_id 			= var.ec2_parameters.subnet
