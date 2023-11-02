@@ -39,5 +39,8 @@ sudo ansible-galaxy collection install amazon.aws -y >>/var/tmp/yum.update 2>&1
 sudo apt install python3-pip -y >>/var/tmp/yum.update 2>&1
 sudo su - -c 'su - ansiuser -c "aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate ."'
 sudo su - -c 'su - ansiuser -c "whoami"' >>/var/tmp/yum.update 2>&1
+sudo wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
+sudo unzip terraform_1.6.3_linux_amd64.zip
+sudo mv terraform /usr/bin
 EOF
 }
