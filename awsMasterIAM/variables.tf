@@ -10,6 +10,10 @@ variable "subnet_id" {
   type        = string
 }
 
+variable "vpc_security_group_ids" {
+  type        = string
+}
+
 variable "ec2_parameters" { 
 	default = { 
 		region = "us-east-1"
@@ -19,6 +23,5 @@ variable "ec2_parameters" {
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg" 
 		iam_instance_profile   = "test_profile"
-		vpc_security_group_ids = ["sg-0164dd95dd71ac5c4"]
 	} 
 }
