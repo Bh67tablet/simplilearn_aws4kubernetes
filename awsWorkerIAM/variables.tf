@@ -15,7 +15,6 @@ variable "subnet_id" {
 		region = "us-east-1"
 		ami = "ami-0fc5d935ebf8bc3bc"
 		itype = "t2.micro"
-		subnet = var.subnet_id
 		publicip = true
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg"  
