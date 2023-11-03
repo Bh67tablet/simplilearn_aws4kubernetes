@@ -32,10 +32,3 @@ wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.
 apt install unzip -y
 unzip terraform_1.6.3_linux_amd64.zip
 mv terraform /usr/bin
-#
-apt install default-jre -y
-wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list > /dev/null
-apt-get update -y
-apt-get install jenkins -y
-systemctl start jenkins
