@@ -17,3 +17,9 @@ variable "ec2_parameters" {
 		iam_instance_profile   = "test_profile"
 	} 
 }
+
+variable "vpc_security_group_ids" {
+  description = "A list of security group IDs to associate with"
+  type        = list(string)
+  default     = null
+}
