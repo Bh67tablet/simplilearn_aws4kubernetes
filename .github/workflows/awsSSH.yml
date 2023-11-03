@@ -20,7 +20,9 @@ jobs:
     - name: Validate AWS Credentials working or not
       run: |
         aws sts get-caller-identity
-    #sshpass -pansiuser ssh -o StrictHostKeyChecking=no ansiuser@172.31.5.131 ls -la
+        
     - name: sshpass
       run: sshpass -p${{ secrets.ANSIBLE_USER_PW }} ssh -o StrictHostKeyChecking=no ansiuser@3.222.185.41 pwd && ls -la
+    - run: sshpass -p${{ secrets.ANSIBLE_USER_PW }} ssh -o StrictHostKeyChecking=no ansiuser@3.222.185.41 ls -l /home/ansiuser/.ssh
       #run: SSHPASS=${{ secrets.ANSIBLE_USER_PW }} sshpass -e ssh ansiuser@3.222.185.41 ls
+      #sshpass -pansiuser ssh -o StrictHostKeyChecking=no ansiuser@172.31.5.131 ls -la
