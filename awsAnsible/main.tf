@@ -14,7 +14,7 @@ resource "aws_instance" "awsAnsible" {
 	tags = {
 	    # The count.index allows you to launch a resource 
 	    # starting with the distinct index number 0 and corresponding to this instance.
-	    Name = "Ansible-${count.index}"
+	    Name = "awsAnsibleAuto-${count.index}"
   	}
 user_data = <<EOF
 #! /bin/bash
