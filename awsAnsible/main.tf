@@ -28,6 +28,6 @@ sudo systemctl restart sshd
 sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplilearn_aws.git"' >>/var/tmp/yum.update 2>&1
 sudo chmod 755 /home/ansiuser/simplilearn_aws/awsAnsible/*.sh >>/var/tmp/yum.update 2>&1
 sudo sh /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
-sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_ansiuser.sh' >>/var/tmp/yum.update 2>&1
+sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_ansiuser.sh' >>/var/tmp/ansiuser.log 2>&1
 EOF
 }
