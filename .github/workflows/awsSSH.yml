@@ -25,6 +25,7 @@ jobs:
       run: |
         #!/bin/bash
         whoami
+        sudo su - ansiuser -c whoami
         #echo $(grep -w "private_ip".*, /home/ansiuser/terraform.tfstate | cut -d"\"" -f4) >> /home/ansiuser/ips
         for ip in $(cat /home/ansiuser/ips); do sshpass -pansiuser ssh -o StrictHostKeyChecking=no ansiuser@$ip rm -rf .ssh; done
         ssh-keygen -q -t rsa -f /home/ansiuser/.ssh/id_rsa -N '' <<< $'\ny' >/dev/null 2>&1
