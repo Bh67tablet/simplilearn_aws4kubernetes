@@ -1,4 +1,4 @@
-name: awsMasterIAM
+name: awsA
 
 on:
   workflow_dispatch:
