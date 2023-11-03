@@ -1,4 +1,5 @@
 #!/bin/bash
+whoami
 aws s3 cp s3://bh67-githubactions-bucket/terraform.tfstate .
 echo $(grep -w "private_ip".*, /home/ansiuser/terraform.tfstate | cut -d"\"" -f4) >> /home/ansiuser/ips
 echo [webserver] > /home/ansiuser/myinventory
