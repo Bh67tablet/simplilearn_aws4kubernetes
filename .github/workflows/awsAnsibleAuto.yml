@@ -1,4 +1,4 @@
-name: awsA
+name: awsAnsibleAuto
 
 on:
   workflow_dispatch:
