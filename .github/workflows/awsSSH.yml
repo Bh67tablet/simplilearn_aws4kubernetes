@@ -37,4 +37,4 @@ jobs:
       run: |
         aws sts get-caller-identity
     - name: sshpass
-      run: SSHPASS='${{ secrets.ANSIBLE_USER_PW }}' sshpass -e ssh ansiuser@172.31.5.131 whoami
+      run: SSHPASS='${{ secrets.ANSIBLE_USER_PW }}' sshpass -e ssh ansiuser@3.222.185.41 ls
