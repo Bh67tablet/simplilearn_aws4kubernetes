@@ -1,4 +1,5 @@
 #!/bin/bash
+whoami
 echo "I was here"
 apt -y update
 apt -y install git
