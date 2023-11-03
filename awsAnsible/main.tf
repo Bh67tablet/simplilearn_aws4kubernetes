@@ -18,9 +18,16 @@ resource "aws_instance" "awsAnsible" {
   	}
 user_data = <<EOF
 #! /bin/bash
-sudo sh /home/ansiuser/simplilearn_aws/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
+sudo useradd -m ansiuser -s /bin/bash -p 'ansiuser'
+sudo echo "ansiuser:ansiuser" | chpasswd
+sudo cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+sudo cp -p /etc/sudoers /etc/sudoers.bak
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sudo sed -i "s/^root.*$/root    ALL=(ALL:ALL) ALL\nansiuser ALL=NOPASSWD: ALL/g" /etc/sudoers
+sudo systemctl restart sshd
 sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplilearn_aws.git"' >>/var/tmp/yum.update 2>&1
 sudo chmod 755 /home/ansiuser/simplilearn_aws/*.sh >>/var/tmp/yum.update 2>&1
+sudo sh /home/ansiuser/simplilearn_aws/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
 sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/master_config_run_as_ansiuser.sh' >>/var/tmp/yum.update 2>&1
 EOF
 }
