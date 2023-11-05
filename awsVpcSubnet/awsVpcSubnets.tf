@@ -15,5 +15,5 @@ output "first_subnet_id" {
 
 output "vpc_id" {
   description = "ID of project VPC"
-  value       = module.aws_vpc.vpc_id
+  value       = data.aws_vpc.this.id
 }
