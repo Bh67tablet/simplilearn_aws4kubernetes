@@ -6,6 +6,12 @@ variable "subnet_id" {
   type        = string
 }
 
+variable "security_group_ids" {
+  description = "List of ingress rules to create where 'source_security_group_id' is used"
+  type        = list(map(string))
+  default     = []
+}
+
 variable "ec2_parameters" { 
 	default = { 
 		region = "us-east-1"
