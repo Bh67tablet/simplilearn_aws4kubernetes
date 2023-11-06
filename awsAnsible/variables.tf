@@ -8,8 +8,7 @@ variable "subnet_id" {
 
 variable "security_group_ids" {
   description = "List of ingress rules to create where 'source_security_group_id' is used"
-  type        = list(string)
-  default     = []
+  type        = string
 }
 
 variable "ec2_parameters" { 
