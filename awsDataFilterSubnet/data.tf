@@ -1,11 +1,15 @@
-data "aws_subnet" "get-subnet-id" {
+data "aws_subnets" "example" {
   filter {
-    name   = "tag:Name"
-    values = ["public1"]
+    name   = "vpc-id"
+    values = [var.vpc_id]
   }
-
 }
 
-output "aws_subnet_id" {
-  value = data.aws_subnet.get-subnet-id.id
+data "aws_subnet" "example" {
+  for_each = toset(data.aws_subnets.example.ids)
+  id       = each.value
+}
+
+output "subnet_cidr_blocks" {
+  value = [for s in data.aws_subnet.example : s.cidr_block]
 }
