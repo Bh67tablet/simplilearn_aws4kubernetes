@@ -1,3 +1,11 @@
+ variable "region" { 
+   default ="us-east-1" 
+ } 
+
+variable "vpc_id" {
+  type        = string
+}
+
 data "aws_subnets" "example" {
   filter {
     name   = "vpc-id"
