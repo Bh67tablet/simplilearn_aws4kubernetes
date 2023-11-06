@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_security_group" "bh67sg" {
  	name 		= var.ec2_parameters.secgroupname
  	description 	= var.ec2_parameters.secgroupname
- 	vpc_id 	= var.vpc_id
+ 	vpc_id 		= [data.aws_vpc.default.id]
 
   // ssh, https, rdp, postgres
   ingress {
