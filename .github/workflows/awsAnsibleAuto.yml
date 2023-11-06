@@ -39,4 +39,4 @@ jobs:
     - name: Execute terraform scripts
       run: |
         terraform init
-        terraform apply --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}"
+        terraform apply --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}" -var="security_group_ids=${{ vars.SEC_GROUP_ID }}"
