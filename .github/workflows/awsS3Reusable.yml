@@ -42,7 +42,7 @@ jobs:
     - name: showvar
       env:
         terraformPath: ${{ needs.build.outputs.terraformPath }}
-      run: echo "terraformPath=${terraformPath2}"
+      run: echo "terraformPath=${terraformPath}"
     
     - name: Downloading manifests from GitHub
       uses: actions/download-artifact@v3
