@@ -7,7 +7,7 @@ jobs:
   call-workflow-passing-data:
     uses: ./.github/workflows/awsS3Reusable.yml
     with:
-      terraformPath: ${{ github.workspace }}/terraform_s3/*
+      terraformPath: "${{ github.workspace }}/terraform_s3/*"
     secrets:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
