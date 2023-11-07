@@ -1,7 +1,19 @@
 name: awsS3Reusable
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      terraformPath:
+        required: true
+        type: string
+    secrets:
+      aws-access-key-id:
+        required: true
+      aws-secret-access-key:
+        required: true
+      aws-session-token:
+        required: true
+  
 
 jobs:
   build:
