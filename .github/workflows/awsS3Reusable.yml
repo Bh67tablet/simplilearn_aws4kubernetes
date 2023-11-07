@@ -43,6 +43,10 @@ jobs:
       env:
         terraformPath: ${{ needs.build.outputs.terraformPath }}
       run: echo "terraformPath=${terraformPath}"
+    - name: acceskey
+      env:
+        aws-access-key-id: ${{ secrets.aws-access-key-id }}
+      run: echo "aws-access-key-id=${aws-access-key-id}"
     
     - name: Downloading manifests from GitHub
       uses: actions/download-artifact@v3
