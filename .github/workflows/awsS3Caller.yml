@@ -5,7 +5,7 @@ on:
   
 jobs:
   call-workflow-passing-data:
-    uses: .github/workflows/awsS3Reusable.yml@main
+    uses: ./.github/workflows/awsS3Reusable.yml
     with:
       terraformPath: terraform_s3/*
     secrets: inherit
