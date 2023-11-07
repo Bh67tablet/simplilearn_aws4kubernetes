@@ -7,7 +7,7 @@ on: [workflow_dispatch]
 
 jobs:
   job1:
-    runs-on: cloud9
+    runs-on: ubuntu-latest
     steps:
       - run: echo  ${{ secrets.GITHUB_TOKEN }} | gh auth login -h github.vodafone.com --with-token
       #- run: for i in $(gh workflow view ${{ github.workflow }} | cut -f8- | sed -n '/^[0-9]/p' | sort -gr | sed -n '3,500p'); do gh run delete $i; done
