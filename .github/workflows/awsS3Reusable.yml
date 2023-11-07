@@ -7,11 +7,11 @@ on:
         required: true
         type: string
     secrets:
-      aws-access-key-id:
+      AWS_ACCESS_KEY_ID:
         required: true
-      aws-secret-access-key:
+      AWS_SECRET_KEY:
         required: true     
-      aws-session-token: 
+      AWS_SESSION_TOKEN: 
         required: true
   
 env:
@@ -45,8 +45,8 @@ jobs:
       run: echo "terraformPath=${terraformPath}"
     - name: acceskey
       env:
-        aws-access-key-id: ${{ secrets.aws-access-key-id }}
-      run: echo "aws-access-key-id=${aws-access-key-id}"
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      run: echo "aws_access_key_id=${aws_access_key_id}"
     
     - name: Downloading manifests from GitHub
       uses: actions/download-artifact@v3
@@ -57,11 +57,14 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v4
       env:
         terraformPath: ${{ needs.build.outputs.terraformPath }}
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+        aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
       with:
         aws-region: us-east-1
+        aws-access-key-id: ${{ env.aws_access_key_id }}
+        aws-secret-access-key: ${{ env.aws_secret_access_key }}
+        aws-session-token: ${{ env.aws_session_token }}
     
     - name: Validate AWS Credentials working or not
       run: |
