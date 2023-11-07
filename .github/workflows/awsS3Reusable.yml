@@ -41,8 +41,8 @@ jobs:
     steps:
     - name: showvar
       env:
-        terrafromPath: ${{ needs.build.outputs.terraformPath }}
-      run: echo "terraformPath=${terraformPath}"
+        terraformPath: ${{ needs.build.outputs.terraformPath }}
+      run: echo "terraformPath=${terraformPath2}"
     
     - name: Downloading manifests from GitHub
       uses: actions/download-artifact@v3
@@ -52,7 +52,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       env:
-        terrafromPath: ${{ needs.build.outputs.terraformPath }}
+        terraformPath: ${{ needs.build.outputs.terraformPath }}
       with:
         aws-region: us-east-1
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
