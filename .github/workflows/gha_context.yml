@@ -9,8 +9,6 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo  ${{ secrets.GITHUB_TOKEN }} | gh auth login -h github.vodafone.com --with-token
-      #- run: for i in $(gh workflow view ${{ github.workflow }} | cut -f8- | sed -n '/^[0-9]/p' | sort -gr | sed -n '3,500p'); do gh run delete $i; done
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
@@ -30,4 +28,3 @@ jobs:
       - run: echo ${{ github.event.repository.name }}
       - run: echo ${{ runner.workspace }}/${{ github.event.repository.name }}
       - run: echo ${{ env.rpath }}
-      #- run: ${{ env.rpath }} command not found
