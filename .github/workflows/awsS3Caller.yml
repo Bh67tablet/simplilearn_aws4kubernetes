@@ -1,7 +1,7 @@
 name: awsS3Caller
 
 on:
-  workflow_call:
+  workflow_dispatch:
   
 jobs:
   call-workflow-passing-data:
