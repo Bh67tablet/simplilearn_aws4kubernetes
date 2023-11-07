@@ -21,7 +21,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "terraformPath=${terraformPath}"
+    - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}"
     
     - name: Code Checkout
       uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
        name: terraformArtifacts
-       path: ${{ github.workspace }}/${terraformPath}
+       path: ${terraformPath}
         
   deploy: 
     runs-on: ubuntu-latest
