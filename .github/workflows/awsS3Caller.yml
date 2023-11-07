@@ -8,5 +8,4 @@ jobs:
     uses: .github/workflows/awsS3Reusable.yml@main
     with:
       terraformPath: terraform_s3/*
-      aws-region: us-east-1
     secrets: inherit
