@@ -6,13 +6,6 @@ on:
       terraformPath:
         required: true
         type: string
-    secrets:
-      aws-access-key-id:
-        required: true
-      aws-secret-access-key:
-        required: true
-      aws-session-token:
-        required: true
   
 env:
   terraformPath: ${{ inputs.terraformPath }}
