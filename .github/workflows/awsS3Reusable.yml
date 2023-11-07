@@ -14,11 +14,15 @@ on:
       aws-session-token:
         required: true
   
+env:
+  terraformPath: ${{ inputs.terraformPath }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - run: echo "terraformPath=${terraformPath}"
+    
     - name: Code Checkout
       uses: actions/checkout@v3
 
@@ -26,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
        name: terraformArtifacts
-       path: terraform_s3/*
+       path: ${terraformPath}
         
   deploy: 
     runs-on: ubuntu-latest
