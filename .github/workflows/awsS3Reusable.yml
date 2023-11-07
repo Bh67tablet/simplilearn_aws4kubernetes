@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}" >> $GITHUB_ENV
+    - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}"
     
     - name: Code Checkout
       uses: actions/checkout@v3
