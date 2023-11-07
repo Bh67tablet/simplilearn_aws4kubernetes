@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}" >> $GITHUB_ENV
-    - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}"
+    - run: echo "terraformPath=${terraformPath}"
     
     - name: Code Checkout
       uses: actions/checkout@v3
@@ -39,6 +39,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: showvar
+      env:
+        terrafromPath: ${{ needs.build.outputs.terraformPath }}
+      run: echo "terraformPath=${terraformPath}"
+    
     - name: Downloading manifests from GitHub
       uses: actions/download-artifact@v3
       with:
