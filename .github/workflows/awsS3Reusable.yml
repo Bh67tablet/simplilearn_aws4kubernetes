@@ -31,6 +31,8 @@ jobs:
       with:
        name: terraformArtifacts
        path: ${{ env.terraformPath }}
+    outputs: 
+      terrafromPath: ${{ env.terraformPath }}
         
   deploy: 
     runs-on: ubuntu-latest
@@ -43,6 +45,8 @@ jobs:
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
+      env:
+        terrafromPath: ${{ needs.build.outputs.terraformPath }}
       with:
         aws-region: us-east-1
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
