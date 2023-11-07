@@ -33,7 +33,7 @@ jobs:
        name: terraformArtifacts
        path: ${{ env.terraformPath }}
     outputs: 
-      terrafromPath: ${{ env.terraformPath }}
+      terraformPath: ${{ env.terraformPath }}
         
   deploy: 
     runs-on: ubuntu-latest
