@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_security_group" "bh67sg" {
  	name 		= var.ec2_parameters.secgroupname
  	description 	= var.ec2_parameters.secgroupname
- 	vpc_id 		= var.vpc_id
+ 	vpc_id 		= var.ec2_parameters.vpc_id
 
   // ssh, https, rdp, postgres
   ingress {
@@ -59,7 +59,7 @@ resource "aws_instance" "bh67" {
 	count = 2
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
-	subnet_id 			= var.subnet_id
+	subnet_id 			= var.ec2_parameters.subnet_id
 	associate_public_ip_address 	= var.ec2_parameters.publicip
 	key_name 			= var.ec2_parameters.keyname
 	iam_instance_profile 		= "${aws_iam_instance_profile.test_profile.name}"
