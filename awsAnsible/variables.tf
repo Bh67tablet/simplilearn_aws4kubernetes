@@ -15,5 +15,6 @@ variable "ec2_parameters" {
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg" 
 		iam_instance_profile   = "test_profile"
+		subnet_id ="subnet-058d5a9620fe9be29"
 	} 
 }
