@@ -17,6 +17,7 @@ variable "subnet_id" {
 		itype = "t2.micro"
 		publicip = true
 		keyname = "simplilearn_key"
-		secgroupname = "bh67sg"  
+		secgroupname = "bh67sg"
+		vpc_id = "vpc-0960972d0b6d177b7"
 	} 
  }
