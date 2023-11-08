@@ -1,0 +1,75 @@
+name: awsTerraformReusable
+
+on:
+  workflow_call:
+    inputs:
+      terraformPath:
+        required: true
+        type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_KEY:
+        required: true     
+      AWS_SESSION_TOKEN: 
+        required: true
+  
+env:
+  terraformPath: ${{ inputs.terraformPath }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}" >> $GITHUB_ENV
+    - run: echo "terraformPath=${terraformPath}"
+    
+    - name: Code Checkout
+      uses: actions/checkout@v3
+
+    - name: Storing manifests in GitHub
+      uses: actions/upload-artifact@v3
+      with:
+       name: terraformArtifacts
+       path: ${{ env.terraformPath }}
+    outputs: 
+      terraformPath: ${{ env.terraformPath }}
+        
+  deploy: 
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: showvar
+      env:
+        terraformPath: ${{ needs.build.outputs.terraformPath }}
+      run: echo "terraformPath=${terraformPath}"
+    - name: acceskey
+      env:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      run: echo "aws_access_key_id=${aws_access_key_id}"
+    
+    - name: Downloading manifests from GitHub
+      uses: actions/download-artifact@v3
+      with:
+       name: terraformArtifacts
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      env:
+        terraformPath: ${{ needs.build.outputs.terraformPath }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+        aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+      with:
+        aws-region: us-east-1
+        aws-access-key-id: ${{ env.aws_access_key_id }}
+        aws-secret-access-key: ${{ env.aws_secret_access_key }}
+        aws-session-token: ${{ env.aws_session_token }}
+    
+    - name: Validate AWS Credentials working or not
+      run: |
+        aws sts get-caller-identity
+    - name: Execute terraform scripts to launch S3 bucket
+      run: |
+        terraform init
+        terraform apply --auto-approve
