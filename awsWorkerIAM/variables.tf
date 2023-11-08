@@ -19,5 +19,6 @@ variable "subnet_id" {
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg"
 		vpc_id = "vpc-0960972d0b6d177b7"
+		subnet_id ="subnet-058d5a9620fe9be29"
 	} 
  }
