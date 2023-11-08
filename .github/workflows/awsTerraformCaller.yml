@@ -1,0 +1,14 @@
+name: awsTerraformCaller
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  s3:
+    uses: ./.github/workflows/awsTerraformReusable.yml
+    with:
+      terraformPath: terraform_s3/*
+    secrets:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
