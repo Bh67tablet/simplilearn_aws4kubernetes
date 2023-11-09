@@ -7,7 +7,7 @@ terraform {
 }
 
 #### refering the vpc (resource-1) remote backend
-data "terraform_remote_state" "vpc_subnets_ids" {
+data "terraform_remote_state" "first_subnet_id" {
   backend = "s3"
 
   config = {
