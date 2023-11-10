@@ -1,3 +1,7 @@
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+}
+
 resource "aws_security_group" "sec-group-vpc-ssh-icmp" {
   count       = 1
   name        = "${var.env}-${var.security_group_vpc_name}"
