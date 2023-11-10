@@ -5,3 +5,12 @@ terraform {
     region = "us-east-1"
   }
 }
+# worker remote state file:
+data "terraform_remote_state" "global" {
+  backend = "s3"
+  config = {
+    bucket = "centraldeploymentstate"
+    key	   = "terraform.tfstate"
+    region = "eu-central-1"
+  }
+}
