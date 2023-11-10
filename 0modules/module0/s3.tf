@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "example" {
-  bucket = bucket-name"
+  bucket = "bh67"
 
   tags = {
     Name        = "bh67"
-    Environment = "dev"
+    Environment = "Dev"
   }
 }
