@@ -5,8 +5,7 @@ on:
   
 jobs:
   Master:
-    uses: ./.github/workflows/awsTerraformReusable.yml
-    needs: Worker
+    uses: ./.github/workflows/awsTerraformReusable.yml    
     with:
       terraformPath: awsAnsible/*
     secrets:
@@ -16,7 +15,7 @@ jobs:
         
   Worker:
     uses: ./.github/workflows/awsTerraformReusable.yml
-    needs: s3
+    needs: Master
     with:
       terraformPath: awsWorkerIAM/*
     secrets:
@@ -26,6 +25,7 @@ jobs:
         
   s3:
     uses: ./.github/workflows/awsTerraformReusable.yml
+    needs: Worker
     with:
       terraformPath: terraform_s3/*
     secrets:
