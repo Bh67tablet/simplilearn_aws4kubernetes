@@ -2,6 +2,14 @@ name: awsWorkerIAM
 
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        default: apply
+        type: choice
+        description: deploy or destroy
+        options: 
+        - apply
+        - destroy
 
 jobs:
   build:
@@ -39,5 +47,5 @@ jobs:
     - name: Execute terraform scripts
       run: |
         terraform init
-        terraform apply --auto-approve --auto-approve
+        terraform ${{ github.event.inputs.name }} --auto-approve
         #terraform apply --auto-approve --auto-approve -var="vpc_id=${{ vars.VPC_ID }}" -var="subnet_id=${{ vars.SUBNET_ID }}"
