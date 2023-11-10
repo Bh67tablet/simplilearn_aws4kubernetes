@@ -14,13 +14,3 @@
 		subnet_id ="subnet-00eeb860859108603"
 	} 
  }
-
-variable "subnet_id" {}
-
-variable "vpc_id" {}
-
-variable "security_group_id" {
-  description = "ID of existing security group whose rules we will manage"
-  type        = string
-  default     = null
-}
