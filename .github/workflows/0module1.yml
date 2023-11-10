@@ -14,7 +14,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
        name: terraformArtifacts
-       path: 0modules/module0/*
+       path: 0modules/module1/*
         
   deploy: 
     runs-on: ubuntu-latest
