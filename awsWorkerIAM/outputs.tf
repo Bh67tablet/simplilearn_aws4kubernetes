@@ -17,7 +17,3 @@ output "vpc_id" {
   description = "ID of project VPC"
   value       = [data.aws_vpc.default.id]
 }
-
-output "aws_security_group_name" {
-  value = aws_security_group.bh67sg[*].id
-}
