@@ -1,9 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "centraldeploymentstate"
+    bucket = "bh67-githubactions-bucket"
     key = "global/terraform.tfstate"
-    region = "eu-central-1"
-    dynamodb_table = "locktable"
+    region = "us-east-1"
   }
 }
  
