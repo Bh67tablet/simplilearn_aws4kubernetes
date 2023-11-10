@@ -10,7 +10,7 @@ resource "aws_instance" "awsAnsible" {
 	associate_public_ip_address 	= var.ec2_parameters.publicip
 	key_name 			= var.ec2_parameters.keyname
 	iam_instance_profile   		= var.ec2_parameters.iam_instance_profile
-	vpc_security_group_ids 		= ["sg-0514cad69fca0d023"]
+	vpc_security_group_ids 		= ["sg-0d9f36a8713c7ad60"]
 	tags = {
 	    # The count.index allows you to launch a resource 
 	    # starting with the distinct index number 0 and corresponding to this instance.
