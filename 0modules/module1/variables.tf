@@ -13,8 +13,3 @@ variable "region" {
 variable "security_group_vpc_name" {
     description = "security group name"
 }
-
-variable "vpc_id" {
-  type        = string
-  description = "VPC id to filter for discovering private subnets"
-}
