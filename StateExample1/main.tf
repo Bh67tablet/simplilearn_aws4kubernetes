@@ -8,15 +8,11 @@ terraform {
  
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
- 
-  tags = local.common_tags
 }
  
 resource "aws_subnet" "lambda" {
   vpc_id 	= aws_vpc.main.id
   cidr_block = "10.0.1.0/24"
- 
-  tags = local.common_tags
 }
  
 resource "aws_security_group" "allow_tls" {
@@ -39,8 +35,6 @@ resource "aws_security_group" "allow_tls" {
     cidr_blocks  	= ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
- 
-  tags = local.common_tags
 }
  
 resource "aws_iam_role" "iam_for_lambda" {
