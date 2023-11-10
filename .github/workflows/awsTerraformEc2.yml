@@ -1,4 +1,4 @@
-name: awsS3
+name: terraform_basics
 
 on:
   workflow_dispatch:
