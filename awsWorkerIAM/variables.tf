@@ -10,7 +10,7 @@
 		publicip = true
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg"
-		vpc_id = "vpc-0d579d6573dfe4b2d"
-		subnet_id ="subnet-08e859590b953e09c"
+		vpc_id = "vpc-0d7ccf08d300cfa0a"
+		subnet_id ="subnet-0fa59f19370e04c49"
 	} 
  }
