@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2" {
-  ami                    = "ami-03e08697c325f02ab"
+  ami                    = "ami-0fc5d935ebf8bc3bc"
   instance_type          = "t2.micro"
   key_name               = "bh67"
   subnet_ids = [data.terraform_remote_state.global.outputs.lambda_subnet_id]
