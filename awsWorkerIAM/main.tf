@@ -62,7 +62,7 @@ resource "aws_instance" "bh67" {
 	subnet_id 			= var.ec2_parameters.subnet_id
 	associate_public_ip_address 	= var.ec2_parameters.publicip
 	key_name 			= var.ec2_parameters.keyname
-	iam_instance_profile 		= "${aws_iam_instance_profile.test_profile.name}"
+	#iam_instance_profile 		= "${aws_iam_instance_profile.test_profile.name}"
 	tags = {
 	    # The count.index allows you to launch a resource 
 	    # starting with the distinct index number 0 and corresponding to this instance.
