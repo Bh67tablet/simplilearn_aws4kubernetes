@@ -21,8 +21,3 @@ output "vpc_id" {
 output "aws_security_group_name" {
   value = aws_security_group.bh67sg[*].id
 }
-
-output "security_group_id" {
-  description = "The ID of the security group"
-  value       = try(aws_security_group.this[0].id, aws_security_group.this_name_prefix[0].id, "")
-}
