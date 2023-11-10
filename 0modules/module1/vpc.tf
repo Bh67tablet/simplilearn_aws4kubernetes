@@ -6,7 +6,8 @@ resource "aws_security_group" "sec-group-vpc-ssh-icmp" {
   count       = 1
   name        = "${var.env}-${var.security_group_vpc_name}"
   description = "test-tgw: Allow SSH and ICMP traffic"
-  vpc_id      = aws_vpc.vpc[count.index].id #${resource.aws_vpc.vpc.id}
+  #vpc_id      = aws_vpc.vpc[count.index].id #${resource.aws_vpc.vpc.id}
+  vpc_id = data.aws_vpc.selected.id
 
   ingress {
     from_port   = 22
