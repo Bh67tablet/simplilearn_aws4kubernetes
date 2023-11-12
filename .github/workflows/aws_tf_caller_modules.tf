@@ -13,7 +13,7 @@ jobs:
         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
 
-  module1:
+  module_1:
     uses: ./.github/workflows/awsTerraformReusable.yml
     needs: s3
     with:
