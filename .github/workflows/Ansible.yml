@@ -70,14 +70,14 @@ jobs:
     - name: Execute terraform scripts
       if: ${{ github.event.inputs.tf_dir == 'AnsibleWorker' }}
       run: |
-        terraform init -reconfigure
-        terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}"
+        terraform init
+        terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}" -var="vpc_id=${{ vars.VPC_ID }}"
 
     - name: Execute terraform scripts
       if: ${{ github.event.inputs.tf_dir == 'AnsibleMaster' }}
       run: |
         terraform init
-        terraform ${{ github.event.inputs.name }} --auto-approve -var="vpc_id=${{ vars.VPC_ID }}" -var="subnet_id=${{ vars.SUBNET_ID }}"
+        terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}"
 
 #terraform apply --auto-approve --auto-approve -var="vpc_id=${{ vars.VPC_ID }}" -var="subnet_id=${{ vars.SUBNET_ID }}"
     
