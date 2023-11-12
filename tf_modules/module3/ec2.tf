@@ -6,6 +6,7 @@ resource "aws_instance" "ec2master" {
 	subnet_id = data.terraform_remote_state.global.outputs.lambda_subnet_id
 	vpc_security_group_ids = [data.terraform_remote_state.global.outputs.tls_security_group_id]
 	iam_instance_profile   = "test_profile"
+	associate_public_ip_address 	= "true"
 	tags = {
 	    Name = "ec2master-${count.index}"
 	}
