@@ -2,6 +2,14 @@ name: tf
 
 on:
   workflow_dispatch:
+    inputs:
+      tf_typ:
+        default: apply
+        type: choice
+        description: deploy or destroy
+        options: 
+        - apply
+        - destroy
   
 jobs:
   modules:
@@ -13,6 +21,7 @@ jobs:
     uses: ./.github/workflows/awsTerraformReusable.yml
     with:
       terraformPath: ${{ matrix.target }}
+      tf_typ: ${{ inputs.tf_typ }}
     secrets:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
