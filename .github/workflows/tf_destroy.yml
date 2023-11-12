@@ -10,7 +10,7 @@ jobs:
         target: [tf_modules/module2/*, tf_modules/module1/*]
       fail-fast: true
       max-parallel: 1
-    uses: ./.github/workflows/awsTerraformReusable2.yml
+    uses: ./.github/workflows/awsTerraformReusableDestroy.yml
     with:
       terraformPath: ${{ matrix.target }}
     secrets:
