@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       tf_typ:
-        default: apply
+        default: plan
         type: choice
         description: deploy or destroy
-        options: 
+        options:
+        - plan
         - apply
         - destroy
   
