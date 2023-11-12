@@ -6,6 +6,9 @@ on:
       terraformPath:
         required: true
         type: string
+      tf_typ:
+       required: true
+       type: string
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
@@ -13,7 +16,7 @@ on:
         required: true     
       AWS_SESSION_TOKEN: 
         required: true
-  
+        
 env:
   terraformPath: ${{ inputs.terraformPath }}
 
@@ -72,4 +75,4 @@ jobs:
     - name: Execute terraform scripts to launch S3 bucket
       run: |
         terraform init
-        terraform apply --auto-approve
+        terraform ${{ inputs.tf_typ }} --auto-approve
