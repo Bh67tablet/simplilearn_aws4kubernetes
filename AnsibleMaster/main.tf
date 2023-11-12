@@ -30,4 +30,10 @@ sudo chmod 755 /home/ansiuser/simplilearn_aws/awsAnsible/*.sh >>/var/tmp/yum.upd
 sudo sh /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
 sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_ansiuser.sh' >>/var/tmp/ansiuser.log 2>&1
 EOF
+
+  vpc_security_group_ids = [
+    aws_security_group.bh67sg.id
+  ]
+  
+  depends_on = [ aws_security_group.bh67sg ]
 }
