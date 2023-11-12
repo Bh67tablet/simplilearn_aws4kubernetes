@@ -70,7 +70,7 @@ jobs:
       if: ${{ github.event.inputs.tf_dir == 'AnsibleWorker' }}
       run: |
         terraform init -reconfigure
-        terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}
+        terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}"
 
     - name: Execute terraform scripts
       if: ${{ github.event.inputs.tf_dir == 'AnsibleMaster' }}
