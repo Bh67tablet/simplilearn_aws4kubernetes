@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "bh67-githubactions-bucket"
-    key    = "awsAnsible/terraform.tfstate"
+    key    = "AnsibleMaster/terraform.tfstate"
     region = "us-east-1"
   }
 }
