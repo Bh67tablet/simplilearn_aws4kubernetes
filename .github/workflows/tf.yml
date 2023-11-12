@@ -25,7 +25,7 @@ jobs:
     
   module2:
     uses: ./.github/workflows/awsTerraformReusable.yml
-    needs: s3
+    needs: module1
     with:
       terraformPath: tf_modules/module2/*
     secrets:
