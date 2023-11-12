@@ -8,4 +8,5 @@ resource "aws_instance" "ec2master" {
 	iam_instance_profile   = "test_profile"
 	tags = {
 	    Name = "ec2master-${count.index}"
+	}
 }
