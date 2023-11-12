@@ -15,7 +15,8 @@ jobs:
   modules:
     strategy:
       matrix:
-        target: [tf_modules/module1/*, tf_modules/module2/*]
+        #target: [tf_modules/module1/*, tf_modules/module2/*]
+        target: [awsWorkerIAM/*, awsAnsible*]
       fail-fast: true
       max-parallel: 1
     uses: ./.github/workflows/tf2reusable.yml
