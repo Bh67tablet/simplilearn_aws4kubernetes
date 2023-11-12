@@ -28,6 +28,9 @@ jobs:
     steps:
     - run: echo "terraformPath=${{ github.workspace }}/${terraformPath}" >> $GITHUB_ENV
     - run: echo "terraformPath=${terraformPath}"
+
+    - run: echo "tf_typ=${{ github.workspace }}/${tf_typ}" >> $GITHUB_ENV
+    - run: echo "tf_typ=${tf_typ}"
     
     - name: Code Checkout
       uses: actions/checkout@v3
@@ -39,6 +42,7 @@ jobs:
        path: ${{ env.terraformPath }}
     outputs: 
       terraformPath: ${{ env.terraformPath }}
+      tf_typ: ${{ env.tf_typ }}
         
   deploy: 
     runs-on: ubuntu-latest
@@ -47,7 +51,11 @@ jobs:
     - name: showvar
       env:
         terraformPath: ${{ needs.build.outputs.terraformPath }}
-      run: echo "terraformPath=${terraformPath}"
+        tf_typ: ${{ needs.build.outputs.tf_typ }}
+      run: |
+        echo "terraformPath=${terraformPath}"
+        echo "tf_typ=${tf_typ}"
+      
     - name: acceskey
       env:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -77,4 +85,4 @@ jobs:
     - name: Execute terraform scripts to launch S3 bucket
       run: |
         terraform init
-        terraform ${{ inputs.tf_typ }} --auto-approve
+        terraform ${{ needs.build.outputs.tf_typ }} --auto-approve
