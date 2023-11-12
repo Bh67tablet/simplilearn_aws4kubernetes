@@ -1,4 +1,4 @@
-name: tf2
+name: tf2caller
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
         target: [tf_modules/module1/*, tf_modules/module2/*]
       fail-fast: true
       max-parallel: 1
-    uses: ./.github/workflows/awsTerraformReusable2.yml
+    uses: ./.github/workflows/tf2reusable.yml
     with:
       terraformPath: ${{ matrix.target }}
       tf_typ: ${{ inputs.tf_typ }}
