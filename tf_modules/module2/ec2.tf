@@ -1,10 +1,10 @@
 resource "aws_instance" "ec2worker" {
 	count = 2
-  ami                    = "ami-0fc5d935ebf8bc3bc"
-  instance_type          = "t2.micro"
-  key_name               = "simplilearn_key"
-  subnet_id = data.terraform_remote_state.global.outputs.lambda_subnet_id
-  vpc_security_group_ids = [data.terraform_remote_state.global.outputs.tls_security_group_id]
+	ami                    = "ami-0fc5d935ebf8bc3bc"
+	instance_type          = "t2.micro"
+	key_name               = "simplilearn_key"
+	subnet_id = data.terraform_remote_state.global.outputs.lambda_subnet_id
+	vpc_security_group_ids = [data.terraform_remote_state.global.outputs.tls_security_group_id]
 user_data = <<EOF
 #! /bin/bash
 echo "I was here">/var/tmp/greetings.txt
@@ -30,3 +30,4 @@ echo `hostname -I` > ip_`hostname`.txt
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.txt
 aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 EOF
+}
