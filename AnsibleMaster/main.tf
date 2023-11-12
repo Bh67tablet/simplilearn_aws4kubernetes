@@ -10,6 +10,7 @@ resource "aws_instance" "AnsibleMaster" {
 	associate_public_ip_address 	= var.ec2_parameters.publicip
 	key_name 			= var.ec2_parameters.keyname
 	iam_instance_profile   		= var.ec2_parameters.iam_instance_profile
+	vpc_security_group_ids 		= ["sg-0d9a973426764dc7e"]
 	tags = {
 	    # The count.index allows you to launch a resource 
 	    # starting with the distinct index number 0 and corresponding to this instance.
@@ -29,10 +30,4 @@ sudo chmod 755 /home/ansiuser/simplilearn_aws/AnsibleMaster/*.sh >>/var/tmp/yum.
 sudo sh /home/ansiuser/simplilearn_aws/AnsibleMaster/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
 sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/AnsibleMaster/master_config_run_as_ansiuser.sh' >>/var/tmp/ansiuser.log 2>&1
 EOF
-
-  vpc_security_group_ids = [
-    aws_security_group.bh67sg.id
-  ]
-  
-  depends_on = [ aws_security_group.bh67sg ]
 }
