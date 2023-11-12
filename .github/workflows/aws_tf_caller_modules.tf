@@ -7,18 +7,28 @@ jobs:
   s3:
     uses: ./.github/workflows/awsTerraformReusable.yml
     with:
-      terraformPath: tf_modules/module0/*
+      terraformPath: terraform_s3/*
     secrets:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
 
-  module_1:
+  Worker:
     uses: ./.github/workflows/awsTerraformReusable.yml
     needs: s3
     with:
-      terraformPath: tf_modules/module1/*
+      terraformPath: awsWorkerIAM/*
     secrets:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+
+  Master:
+    uses: ./.github/workflows/awsTerraformReusable.yml
+    needs: Worker
+    with:
+      terraformPath: awsAnsible/*
+    secrets:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}        
