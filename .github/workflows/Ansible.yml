@@ -55,25 +55,25 @@ jobs:
         aws sts get-caller-identity
         
     - name: Execute terraform scripts
-      if: ${{ github.event.inputs.tf_dir }} = 'AnsibleS3'
+      if: ${{ github.event.inputs.tf_dir }} == 'AnsibleS3'
       run: |
         terraform init
         terraform ${{ github.event.inputs.name }} --auto-approve
         
     - name: Execute terraform scripts
-      if: ${{ github.event.inputs.tf_dir }} = 'AnsibleIAM'
+      if: ${{ github.event.inputs.tf_dir }} == 'AnsibleIAM'
       run: |
         terraform init
         terraform ${{ github.event.inputs.name }} --auto-approve
         
     - name: Execute terraform scripts
-      if: ${{ github.event.inputs.tf_dir }} = 'AnsibleWorker'
+      if: ${{ github.event.inputs.tf_dir }} == 'AnsibleWorker'
       run: |
         terraform init
         terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}
 
     - name: Execute terraform scripts
-      if: ${{ github.event.inputs.tf_dir }} = 'AnsibleMaster'
+      if: ${{ github.event.inputs.tf_dir }} == 'AnsibleMaster'
       run: |
         terraform init
         terraform ${{ github.event.inputs.name }} --auto-approve -var="vpc_id=${{ vars.VPC_ID }}" -var="subnet_id=${{ vars.SUBNET_ID }}"
