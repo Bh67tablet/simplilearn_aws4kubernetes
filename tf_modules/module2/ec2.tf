@@ -5,4 +5,6 @@ resource "aws_instance" "ec2worker" {
 	key_name               = "simplilearn_key"
 	subnet_id = data.terraform_remote_state.global.outputs.lambda_subnet_id
 	vpc_security_group_ids = [data.terraform_remote_state.global.outputs.tls_security_group_id]
+	tags = {
+	    Name = "ec2worker-${count.index}"
 }
