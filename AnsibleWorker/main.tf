@@ -40,10 +40,4 @@ echo `hostname -I` > ip_`hostname`.txt
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.txt
 aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 EOF
-
-  vpc_security_group_ids = [
-    aws_security_group.bh67sg.id
-  ]
-  
-  depends_on = [ aws_security_group.bh67sg ]
 }
