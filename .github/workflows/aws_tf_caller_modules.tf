@@ -1,4 +1,4 @@
-name: awsTerraformCaller
+name: aws_tf_caller_modules
 
 on:
   workflow_dispatch:
