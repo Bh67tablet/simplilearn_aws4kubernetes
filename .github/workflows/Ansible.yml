@@ -1,4 +1,5 @@
 name: Ansible
+run-name: Ansible_${{ inputs.name }}_${{ inputs.tf_dir }}
 
 on:
   workflow_dispatch:
