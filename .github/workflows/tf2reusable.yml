@@ -1,4 +1,4 @@
-name: awsTerraformReusable2
+name: tf2reusable
 
 on:
   workflow_call:
