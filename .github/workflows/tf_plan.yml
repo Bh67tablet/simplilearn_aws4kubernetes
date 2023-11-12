@@ -1,4 +1,4 @@
-name: tf
+name: tf_plan
 
 on:
   workflow_dispatch:
@@ -10,8 +10,7 @@ jobs:
         target: [tf_modules/module1/*, tf_modules/module2/*]
       fail-fast: true
       max-parallel: 1
-    #uses: ./.github/workflows/awsTerraformReusable.yml
-    uses: ./.github/workflows/awsTerraformReusableDestroy.yml
+    uses: ./.github/workflows/awsTerraformReusable.yml
     with:
       terraformPath: ${{ matrix.target }}
     secrets:
