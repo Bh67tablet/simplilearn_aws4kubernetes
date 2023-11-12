@@ -2,7 +2,7 @@ provider "aws" {
  	region 	= var.ec2_parameters.region
 }
 
-resource "aws_instance" "awsAnsible" {
+resource "aws_instance" "AnsibleMaster" {
 	count = 1
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
@@ -25,9 +25,9 @@ sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/
 sudo sed -i "s/^root.*$/root    ALL=(ALL:ALL) ALL\nansiuser ALL=NOPASSWD: ALL/g" /etc/sudoers
 sudo systemctl restart sshd
 sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplilearn_aws.git"' >>/var/tmp/yum.update 2>&1
-sudo chmod 755 /home/ansiuser/simplilearn_aws/awsAnsible/*.sh >>/var/tmp/yum.update 2>&1
-sudo sh /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
-sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/awsAnsible/master_config_run_as_ansiuser.sh' >>/var/tmp/ansiuser.log 2>&1
+sudo chmod 755 /home/ansiuser/simplilearn_aws/AnsibleMaster/*.sh >>/var/tmp/yum.update 2>&1
+sudo sh /home/ansiuser/simplilearn_aws/AnsibleMaster/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
+sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws/AnsibleMaster/master_config_run_as_ansiuser.sh' >>/var/tmp/ansiuser.log 2>&1
 EOF
 
   vpc_security_group_ids = [
