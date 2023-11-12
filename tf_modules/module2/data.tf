@@ -6,3 +6,11 @@ data "terraform_remote_state" "global" {
     region = "us-east-1"
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket = "bh67"
+    key = "worker/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
