@@ -19,6 +19,8 @@ on:
         
 env:
   terraformPath: ${{ inputs.terraformPath }}
+  tf_typ: ${{ inputs.tf_typ }}
+  
 
 jobs:
   build:
