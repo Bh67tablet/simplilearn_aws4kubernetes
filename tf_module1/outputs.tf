@@ -1,11 +1,9 @@
 output "vpc_id" {
   value   	= aws_vpc.main.id
-  description = "ID of the main VPC"
 }
  
 output "subnet_id" {
-  value   	= aws_subnet.lambda.id
-  description = "ID of the subnet dedicated to Lambdas"
+  value   	= aws_subnet.subnet_id.id
 }
  
 output "security_group_id" {
