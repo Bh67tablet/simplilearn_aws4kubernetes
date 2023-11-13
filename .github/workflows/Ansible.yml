@@ -17,7 +17,7 @@ on:
         description: deploy or destroy
         options: 
         - AnsibleS3
-        - AnsibleIAM
+        - AnsibleIam
         - AnsibleWorker
         - AnsibleMaster
 
@@ -62,7 +62,7 @@ jobs:
         terraform ${{ github.event.inputs.name }} --auto-approve
         
     - name: Execute terraform scripts
-      if: ${{ github.event.inputs.tf_dir == 'AnsibleIAM' }}
+      if: ${{ github.event.inputs.tf_dir == 'AnsibleIam' }}
       run: |
         terraform init
         terraform ${{ github.event.inputs.name }} --auto-approve
