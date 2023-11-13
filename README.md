@@ -16,4 +16,6 @@ ansiuser@ip:~/simplilearn_aws/AnsibleMaster
 
 ## Jenkins
 run install script on AnsibleMaster-0
+install_jenkins.sh
+
 ![1](./jenkins_on_aws_gui_ssh_tunnel_to_lolocalhost_port_8081.png)
