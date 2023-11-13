@@ -61,7 +61,8 @@ AnsibleMaster
 - Install script for Jenkins in Anisble Master
 - Script to create and run my Ansible Playbooks in Directory AnsibleMaster
 
-Ready to Configure Jenkins Plugins, Job and Secret. Edit dev.inv change actual Worker IPv4's.
+Ready to Configure Jenkins Plugins, Job and Secret. Edit dev.inv change actual Worker IPv4's:
+https://github.com/Bh67tablet/simplylearn_Jenkins_Ansible.git
 
 Run Jenkins Job that run Ansible Playbooks to install Java and Python on "Ansible Workers".
 
