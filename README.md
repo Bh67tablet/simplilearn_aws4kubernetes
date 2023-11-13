@@ -64,3 +64,6 @@ AnsibleMaster
 Ready to Configure Jenkins Plugins, Job and Secret. Edit dev.inv change actual Worker IPv4's.
 
 Run Jenkins Job that run Ansible Playbooks to install Java and Python on "Ansible Workers".
+
+#### Questions:
+How to import vpc, subnet_id from aws to my terraform State? To use to create sec group and worker ec2?
