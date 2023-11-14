@@ -66,7 +66,21 @@ https://github.com/Bh67tablet/simplylearn_Jenkins_Ansible.git
 
 Run Jenkins Job that run Ansible Playbooks to install Java and Python on "Ansible Workers".
 
+![1](Bilder/Screenshot153.png)
+![1](Bilder/Screenshot154.png)
+![1](Bilder/Screenshot155.png)
+![1](Bilder/Screenshot165.png)
+![1](Bilder/Screenshot157.png)
+![1](Bilder/Screenshot158.png)
+![1](Bilder/Screenshot159.png)
+![1](Bilder/Screenshot160.png)
+![1](Bilder/Screenshot161.png)
+![1](Bilder/Screenshot162.png)
+![1](Bilder/Screenshot163.png)
+![1](Bilder/Screenshot164.png)
+![1](Bilder/Screenshot152.png)
+
+
 #### Questions:
 How to import vpc, subnet_id from aws to my terraform State? To use to create sec group and worker ec2?
 
-![1](Bilder/Screenshot152.png)
