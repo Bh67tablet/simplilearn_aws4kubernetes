@@ -68,3 +68,5 @@ Run Jenkins Job that run Ansible Playbooks to install Java and Python on "Ansibl
 
 #### Questions:
 How to import vpc, subnet_id from aws to my terraform State? To use to create sec group and worker ec2?
+
+![1](Bilder/Screenshot152.png)
