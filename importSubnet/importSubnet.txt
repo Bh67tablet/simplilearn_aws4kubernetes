@@ -1,0 +1,44 @@
+Zugriff für Terraform configurieren:
+--------------------------------------
+1. aws create user with clie
+2. create key and download access_key.csv
+
+bash:
+aws configure
+input keys
+
+
+-----------------------------
+cat > provider_aws.tf << EOF
+provider "aws" {
+  region = "us-east-1"
+  shared_credentials_file = "~/.aws/credentials"
+}
+EOF
+
+
+cat > subnet.tf << EOF
+resource "aws_subnet" "public_subnet" {
+  # (resource arguments)
+}
+EOF
+
+cat > backend.tf << EOF
+terraform {
+  backend "s3" {
+    bucket = "bh67-githubactions-bucket"
+    key    = "IMPORT/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+EOF
+
+cat > outputs.tf << EOF
+output "bh67_VPC" {
+  value   	= aws_subnet.public_subnet.vpc_id
+  description = "VPC"
+}
+EOF
+
+terraform import aws_subnet.public_subnet subnet-012ddb41083c0980b
+
