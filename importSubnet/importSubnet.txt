@@ -40,5 +40,6 @@ output "bh67_VPC" {
 }
 EOF
 
+terraform init
 terraform import aws_subnet.public_subnet subnet-012ddb41083c0980b
 
