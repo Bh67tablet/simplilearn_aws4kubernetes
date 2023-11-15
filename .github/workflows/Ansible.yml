@@ -20,6 +20,7 @@ on:
         - AnsibleIam
         - AnsibleWorker
         - AnsibleMaster
+        - importSubnet
 
 jobs:
   build:
@@ -79,5 +80,8 @@ jobs:
         terraform init
         terraform ${{ github.event.inputs.name }} --auto-approve -var="subnet_id=${{ vars.SUBNET_ID }}"
 
-#terraform apply --auto-approve --auto-approve -var="vpc_id=${{ vars.VPC_ID }}" -var="subnet_id=${{ vars.SUBNET_ID }}"
-    
+    - name: get VPC ID
+      if: ${{ github.event.inputs.tf_dir == 'importSubnet' }}
+      run: |
+        terraform init
+        terraform terraform import aws_subnet.public_subnet ${{ vars.SUBNET_ID }}
