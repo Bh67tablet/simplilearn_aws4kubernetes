@@ -13,3 +13,5 @@ echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker ansiuser
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+sudo systemctl restart docker.service
