@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "bh67" {
-	count = 1
+	count = 2
 	ami 				= var.ec2_parameters.ami
 	instance_type 			= var.ec2_parameters.itype
 	subnet_id 			= var.subnet_id
