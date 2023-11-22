@@ -1,5 +1,3 @@
-sudo su
-usermod -aG sudo labsuser
 sudo usermod -aG sudo labsuser
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
@@ -15,19 +13,3 @@ echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker labsuser
-whoami
-docker
-kubeadm
-https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64
-wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64
-chmod +x ./ttyd.x86_64 
-./ttyd.x86_64 --version
-sudo ./ttyd.x86_64 /usr/local/bin/ttyd
-sudo mv ./ttyd.x86_64 /usr/local/bin/ttyd
-ttyd --version
-ttyd
-ttyd /bin/bash
-/opt/scripts/voc_start_dcv_and_ttyd_and_monitor.sh
-/opt/scripts/voc_start_ttyd.sh 
-sudo vi /etc/dcv/dcv.conf 
-sudo reboot
