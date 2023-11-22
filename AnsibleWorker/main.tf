@@ -41,6 +41,7 @@ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.t
 aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplilearn_aws4kubernetes.git"' >>/var/tmp/yum.update 2>&1
 sudo chmod 755 /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/*.sh >>/var/tmp/yum.update 2>&1
+sudo sh /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/install_kubernetes.sh >>/var/tmp/yum.update 2>&1
 EOF
 
   vpc_security_group_ids = [
