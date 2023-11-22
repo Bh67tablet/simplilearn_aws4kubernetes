@@ -17,6 +17,13 @@ resource "aws_security_group" "bh67sg" {
     to_port = 443
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  ingress {
+    from_port = 2379
+    protocol = "tcp"
+    to_port = 2380
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   
   ingress {
     from_port = 3389
@@ -33,9 +40,44 @@ resource "aws_security_group" "bh67sg" {
   }
 
   ingress {
+    from_port = 6443
+    protocol = "tcp"
+    to_port = 6443
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port = 8080
     protocol = "tcp"
     to_port = 8080
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 8472
+    protocol = "tcp"
+    to_port = 8472
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 10250
+    protocol = "tcp"
+    to_port = 10250
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 10257
+    protocol = "tcp"
+    to_port = 10259
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 30000
+    protocol = "tcp"
+    to_port = 32767
     cidr_blocks = ["0.0.0.0/0"]
   }
 
