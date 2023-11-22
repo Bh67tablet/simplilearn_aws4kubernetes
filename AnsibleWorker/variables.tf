@@ -14,7 +14,7 @@ variable "vpc_id" {
    default = {
 		region = "us-east-1"
 		ami = "ami-0fc5d935ebf8bc3bc"
-		itype = "t2.micro"
+		itype = "t2.medium"
 		publicip = true
 		keyname = "simplilearn_key"
 		secgroupname = "bh67sg"
