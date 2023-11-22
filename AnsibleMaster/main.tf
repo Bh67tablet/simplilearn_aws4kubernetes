@@ -29,5 +29,6 @@ sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplile
 sudo chmod 755 /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/*.sh >>/var/tmp/yum.update 2>&1
 sudo sh /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/master_config_run_as_root.sh >>/var/tmp/yum.update 2>&1
 sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/master_config_run_as_ansiuser.sh' >>/var/tmp/ansiuser.log 2>&1
+sudo sh /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/install_kubernetes.sh >>/var/tmp/yum.update 2>&1
 EOF
 }
