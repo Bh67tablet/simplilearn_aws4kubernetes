@@ -1,4 +1,4 @@
-sudo usermod -aG sudo labsuser
+sudo usermod -aG sudo ansiuser
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -12,4 +12,4 @@ echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo usermod -aG docker labsuser
+sudo usermod -aG docker ansiuser
