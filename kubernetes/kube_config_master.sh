@@ -1,3 +1,4 @@
+#!/bin/bash
 kubeadm config images pull
 echo ‘{"exec-opts": ["native.cgroupdriver=systemd"]}’ | tee /etc/docker/daemon.json
 systemctl daemon-reload
