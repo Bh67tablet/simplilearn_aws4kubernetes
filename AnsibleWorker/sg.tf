@@ -54,6 +54,13 @@ resource "aws_security_group" "bh67sg" {
   }
 
   ingress {
+    from_port = 8443
+    protocol = "tcp"
+    to_port = 8443
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port = 8472
     protocol = "tcp"
     to_port = 8472
