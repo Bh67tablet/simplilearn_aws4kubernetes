@@ -1,3 +1,4 @@
+#!/bin/bash
 hostnamectl set-hostname master
 apt-get -y update
 apt-get -y install apt-transport-https gnupg2
