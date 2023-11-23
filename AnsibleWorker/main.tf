@@ -50,6 +50,8 @@ sudo bash /tmp/installDocker.sh
 sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installK8S-v1-23.sh -P /tmp
 sudo chmod 755 /tmp/installK8S-v1-23.sh
 sudo bash /tmp/installK8S-v1-23.sh
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+sudo systemctl restart docker.service
 EOF
 
   vpc_security_group_ids = [
