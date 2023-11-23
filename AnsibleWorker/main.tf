@@ -42,8 +42,14 @@ aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplilearn_aws4kubernetes.git"' >>/var/tmp/yum.update 2>&1
 sudo chmod 755 /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/*.sh >>/var/tmp/yum.update 2>&1
 sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
-sudo sh /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/installDocker.sh >>/var/tmp/yum.update 2>&1
-sudo sh /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/installK8S-v1-23.sh >>/var/tmp/yum.update 2>&1
+## Install Docker
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installDocker.sh -P /tmp
+sudo chmod 755 /tmp/installDocker.sh
+sudo bash /tmp/installDocker.sh
+## Install kubeadm,kubelet,kubectl
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installK8S-v1-23.sh -P /tmp
+sudo chmod 755 /tmp/installK8S-v1-23.sh
+sudo bash /tmp/installK8S-v1-23.sh
 EOF
 
   vpc_security_group_ids = [
