@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 hostnamectl set-hostname master
 apt-get -y update
 apt-get -y install apt-transport-https gnupg2
