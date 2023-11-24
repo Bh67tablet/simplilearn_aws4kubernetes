@@ -41,16 +41,13 @@ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.t
 aws s3 cp ip_`hostname`.txt s3://bh67-githubactions-bucket/
 sudo su - -c 'su - ansiuser -c "git clone https://github.com/Bh67tablet/simplilearn_aws4kubernetes.git"' >>/var/tmp/yum.update 2>&1
 sudo chmod 755 /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/*.sh >>/var/tmp/yum.update 2>&1
+# autoinstall
 sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 ## Install Docker
-sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installDocker.sh -P /tmp
-sudo chmod 755 /tmp/installDocker.sh
-sudo bash /tmp/installDocker.sh
+sudo bash /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/installDocker.sh
 ## Install kubeadm,kubelet,kubectl
-sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installK8S-v1-23.sh -P /tmp
-sudo chmod 755 /tmp/installK8S-v1-23.sh
-sudo bash /tmp/installK8S-v1-23.sh
-sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+sudo bash /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/installK8S-v1-23.sh
+sudo cp /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/daemon.json /etc/docker
 sudo systemctl restart docker.service
 EOF
 
