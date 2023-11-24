@@ -44,10 +44,14 @@ sudo chmod 755 /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/*.sh >>/v
 # autoinstall
 sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 ## Install Docker
-sudo bash /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/installDocker.sh
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installDocker.sh -P /tmp
+sudo chmod 755 /tmp/installDocker.sh
+sudo bash /tmp/installDocker.sh
 ## Install kubeadm,kubelet,kubectl
-sudo bash /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/installK8S-v1-23.sh
-sudo cp /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/daemon.json /etc/docker
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installK8S-v1-23.sh -P /tmp
+sudo chmod 755 /tmp/installK8S-v1-23.sh
+sudo bash /tmp/installK8S-v1-23.sh
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
 sudo systemctl restart docker.service
 EOF
 
