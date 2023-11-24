@@ -43,5 +43,4 @@ sudo bash /tmp/installK8S-v1-23.sh >>/var/tmp/yum.update 2>&1
 sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
 sudo systemctl restart docker.service >>/var/tmp/yum.update 2>&1
 EOF
-EOF
 }
