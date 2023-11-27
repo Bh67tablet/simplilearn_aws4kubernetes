@@ -78,6 +78,8 @@ Run Jenkins Job that run Ansible Playbooks to install Java and Python on "Ansibl
 ![1](Bilder/Screenshot162.png)
 ![1](Bilder/Screenshot163.png)
 ![1](Bilder/Screenshot164.png)
+# autoinstall config:
+sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 ![1](Bilder/Screenshot152.png)
 
 
