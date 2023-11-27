@@ -41,5 +41,6 @@ sudo chmod 755 /tmp/installK8S-v1-23.sh
 sudo bash /tmp/installK8S-v1-23.sh
 sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
 sudo systemctl restart docker.service
+sudo su - -c 'su - ansiuser -c /home/ansiuser/simplilearn_aws4kubernetes/AnsibleMaster/kubernetes_config_master_node.sh' >>/var/tmp/ansiuser.log 2>&1
 EOF
 }
