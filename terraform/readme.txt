@@ -1,7 +1,7 @@
 1. run
 aws configure
 
-cat %HOME/.aws/credetials
+cat $HOME/.aws/credetials
 
 2. 
 cd to this dir
