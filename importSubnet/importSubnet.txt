@@ -1,6 +1,6 @@
 Zugriff für Terraform configurieren:
 --------------------------------------
-1. aws create user with clie
+1. aws create user with cli
 2. create key and download access_key.csv
 
 bash:
