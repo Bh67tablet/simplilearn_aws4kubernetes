@@ -25,14 +25,6 @@ resource "aws_instance" "webserver" {
    Name = "Webserver_From_Terraform"
   }
 
-  # Installing required softwares into the system!
-  connection {
-    type = "ssh"
-    user = "ec2-user"
-    private_key = file("/Users/harshitdawar/Github/AWS-CLI/MyKeyFinal.pem")
-    host = aws_instance.webserver.public_ip
-  }
-
   # Code for installing the softwares!
   provisioner "remote-exec" {
     inline = [
