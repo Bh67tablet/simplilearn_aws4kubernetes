@@ -1,3 +1,5 @@
+0. Create User, Role with CLI Admin Access, Download keys for aws configure
+
 1. run
 aws configure
 
