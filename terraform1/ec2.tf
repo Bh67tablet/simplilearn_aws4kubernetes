@@ -20,5 +20,9 @@ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*' >> ip_`hostname`.t
 sudo su - -c 'su - ec2-user -c "git clone https://github.com/Bh67tablet/simplilearn_aws4kubernetes.git"' >>/var/tmp/yum.update 2>&1
 sudo chmod 755 /home/ec2-user/simplilearn_aws4kubernetes/terraform1/*.sh >>/var/tmp/yum.update 2>&1
 sudo bash /home/ec2-user/simplilearn_aws4kubernetes/terraform1/alias_to_bash_profiles.sh
+sudo wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
+sudo yum -y install unzip
+sudo unzip terraform_1.6.3_linux_amd64.zip
+sudo mv terraform /usr/bin
 EOF
 }
