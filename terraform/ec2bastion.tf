@@ -10,7 +10,7 @@ resource "aws_instance" "Bastion-Host" {
   subnet_id = aws_subnet.subnet1.id
 
   # Keyname and security group are obtained from the reference of their instances created above!
-  key_name = "MyKeyFinal"
+  key_name = "simplilearn_key"
    
   # Security group ID's
   vpc_security_group_ids = [aws_security_group.BH-SG.id]
