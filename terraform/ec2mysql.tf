@@ -6,7 +6,7 @@ resource "aws_instance" "MySQL" {
 
   # Using my custom Private AMI which has most of the things configured for WordPress
   # i.e. MySQL Installed!
-  ami = "ami-0f70942519a84d179"
+  ami = "ami-0230bd60aa48260c6"
   instance_type = "t2.micro"
   subnet_id = aws_subnet.subnet2.id
 
