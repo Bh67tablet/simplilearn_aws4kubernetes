@@ -11,7 +11,7 @@ resource "aws_subnet" "subnet1" {
   cidr_block = "192.168.0.0/24"
   
   # Data Center of this subnet.
-  availability_zone = "ap-south-1a"
+  availability_zone = "us-east-1a"
   
   # Enabling automatic public IP assignment on instance launch!
   map_public_ip_on_launch = true
