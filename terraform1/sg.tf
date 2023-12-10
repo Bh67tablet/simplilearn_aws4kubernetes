@@ -1,7 +1,5 @@
 resource "aws_security_group" "bh67sg" {
- 	name 		= var.ec2_parameters.secgroupname
- 	description 	= var.ec2_parameters.secgroupname
- 	vpc_id 		= var.vpc_id
+ 	vpc_id 		= "vpc-059a11b6ec74e97e3"
 
   // ssh, https, rdp, postgres
   ingress {
