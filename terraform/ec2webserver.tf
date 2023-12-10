@@ -10,7 +10,7 @@ resource "aws_instance" "webserver" {
   ]
   
   # AMI ID [I have used my custom AMI which has some softwares pre installed]
-  ami = "ami-0162dd7febeafb455"
+  ami = "ami-0230bd60aa48260c6"
   instance_type = "t2.micro"
   subnet_id = aws_subnet.subnet1.id
 
