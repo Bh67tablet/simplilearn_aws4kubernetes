@@ -2,7 +2,7 @@ resource "aws_instance" "myec2" {
   ami           = "ami-0bb4c991fa89d4b9b"
   instance_type = "t2.micro"
   key_name = "simplilearn_key"
-  subnet_id = "subnet-011176c49fe21b195"
+  #subnet_id = "subnet-011176c49fe21b195"
 
   tags = {
     Name = "Instance1"
