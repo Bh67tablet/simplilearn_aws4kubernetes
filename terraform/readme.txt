@@ -1,3 +1,5 @@
+https://harshitdawar.medium.com/launching-a-vpc-with-public-private-subnet-nat-gateway-in-aws-using-terraform-99950c671ce9
+
 List of steps in the Pipeline
 Steps in the Pipeline:
 
