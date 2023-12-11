@@ -86,3 +86,9 @@ jobs:
       run: |
         terraform init
         terraform import aws_subnet.public_subnet ${{ vars.SUBNET_ID }}
+        
+    - name: Execute terraform scripts
+      if: ${{ github.event.inputs.tf_dir == 'terraform1' }}
+      run: |
+        terraform init
+        terraform ${{ github.event.inputs.name }} --auto-approve
