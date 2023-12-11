@@ -21,6 +21,7 @@ on:
         - AnsibleWorker
         - AnsibleMaster
         - importSubnet
+        - Terraform1
 
 jobs:
   build:
