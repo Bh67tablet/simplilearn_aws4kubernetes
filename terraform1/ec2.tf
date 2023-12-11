@@ -27,9 +27,11 @@ sudo yum -y install unzip
 sudo unzip terraform_1.6.3_linux_amd64.zip
 sudo mv terraform /usr/bin
 EOF
+
   vpc_security_group_ids = [
     aws_security_group.bh67sg.id
   ]
   
   depends_on = [ aws_security_group.bh67sg ]
+
 }
