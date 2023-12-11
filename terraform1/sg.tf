@@ -1,5 +1,5 @@
 resource "aws_security_group" "bh67sg" {
- 	vpc_id 		= "vpc-059a11b6ec74e97e3"
+ 	#vpc_id 		= "vpc-059a11b6ec74e97e3"
 
   // ssh, https, rdp, postgres
   ingress {
