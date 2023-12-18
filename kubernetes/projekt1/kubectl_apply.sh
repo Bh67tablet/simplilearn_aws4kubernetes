@@ -5,3 +5,5 @@ kubectl get deployments -o wide
 kubectl get pods -o wide
 kubectl get services -o wide
 kubectl apply -f wordpress.yaml
+kubectl get services
+kubectl get pods
