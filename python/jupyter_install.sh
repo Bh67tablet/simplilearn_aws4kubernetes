@@ -14,7 +14,8 @@ conf.NotebookApp.ip = '0.0.0.0'
 conf.NotebookApp.password = u'YOUR PASSWORD HASH'
 conf.NotebookApp.port = 8888
 EOF
-git clone https://github.com/Mohdwajtech/Complete-Python-3-Bootcamp.git
+# https://github.com/Mohdwajtech/Complete-Python-3-Bootcamp.git
+git clone https://github.com/Bh67tablet/Complete-Python-3-Bootcamp.git
 # set your password
 #jupyter notebook password
 #
