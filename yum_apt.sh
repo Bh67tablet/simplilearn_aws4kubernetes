@@ -8,6 +8,7 @@ install_ubuntu() {
 	sudo apt -y install unzip
  	sudo apt -y install bzip2
 	sudo apt -y install git
+ 	sudo apt -y install expect
 	sudo wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
 	sudo unzip terraform_1.6.3_linux_amd64.zip
 	sudo mv terraform /usr/bin
