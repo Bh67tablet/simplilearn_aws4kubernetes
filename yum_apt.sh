@@ -11,8 +11,7 @@ install_ubuntu() {
 	sudo wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
 	sudo unzip terraform_1.6.3_linux_amd64.zip
 	sudo mv terraform /usr/bin
- 	sudo su - -c 'su - ubuntu -c curl -O https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh' >>/var/tmp/ansiuser.log 2>&1
-  	sudo su - -c 'su - ubuntu -c git clone https://github.com/Bh67tablet/Complete-Python-3-Bootcamp.git' >>/var/tmp/ansiuser.log 2>&1  
+  	sudo su - -c 'su - ubuntu -c "git clone https://github.com/Bh67tablet/Complete-Python-3-Bootcamp.git"' >>/var/tmp/ansiuser.log 2>&1
 	exit 0
 }
 
