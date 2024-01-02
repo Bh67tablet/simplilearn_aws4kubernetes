@@ -4,8 +4,8 @@ provider "aws" {
 
 resource "aws_instance" "ec2" {
 	count 		= 1
-	ami 		= "ami-0fc5d935ebf8bc3bc"
-	instance_type 	= "t2.medium"
+	ami 		= "ami-079db87dc4c10ac91"
+	instance_type 	= "t2.micro"
 	key_name 	= "bh67"
 	associate_public_ip_address 	= "true"
 	tags = {
