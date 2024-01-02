@@ -12,9 +12,11 @@ resource "aws_instance" "ec2" {
 	    Name = "jupyter-${count.index}"
   	}
 	root_block_device {
-	    volume_size = 16 # in GB <<----- I increased this!
-	    volume_type = "gp3"
-  	}
+	    volume_size           = "20"
+	    volume_type           = "gp2"
+	    encrypted             = true
+	    delete_on_termination = true
+	  }
 user_data = <<EOF
 #/bin/bash!
 sudo yum -y install bzip2
