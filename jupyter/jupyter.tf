@@ -3,13 +3,13 @@ provider "aws" {
 }
 
 resource "aws_instance" "ec2" {
-	count = 1
-	ami 				= "ami-0fc5d935ebf8bc3bc"
-	instance_type 		= "t2.medium"
-	key_name 			= "bh67.pem"
+	count 		= 1
+	ami 		= "ami-0fc5d935ebf8bc3bc"
+	instance_type 	= "t2.medium"
+	key_name 	= "bh67.pem"
 	associate_public_ip_address 	= "true"
 	tags = {
-	    Name = "KubernetesMaster-${count.index}"
+	    Name = "jupyter-${count.index}"
   	}
 user_data = <<EOF
 #/bin/bash!
