@@ -16,7 +16,7 @@ resource "aws_instance" "ec2" {
 	    volume_type           = "gp2"
 	    encrypted             = true
 	    delete_on_termination = true
-	  }
+	}
 user_data = <<EOF
 #/bin/bash!
 sudo yum -y install bzip2
