@@ -18,7 +18,7 @@ resource "aws_instance" "ec2" {
 	    delete_on_termination = true
 	}
 user_data = <<EOF
-#/bin/bash!
+#! /bin/bash
 sudo yum -y install bzip2
 sudo yum -y install git
 sudo su - -c 'su - ec2-user -c "echo PATH=$PATH:/home/ec2-user/anaconda3/bin >> ~/.bash_profile"'
