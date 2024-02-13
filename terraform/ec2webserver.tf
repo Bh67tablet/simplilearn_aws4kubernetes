@@ -16,7 +16,7 @@ resource "aws_instance" "webserver" {
 
   # Keyname and security group are obtained from the reference of their instances created above!
   # Here I am providing the name of the key which is already uploaded on the AWS console.
-  key_name = "simplilearn_key"
+  key_name = "bh67key"
   
   # Security groups to use!
   vpc_security_group_ids = [aws_security_group.WS-SG.id]
